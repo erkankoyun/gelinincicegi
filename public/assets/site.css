@@ -216,3 +216,46 @@ body.gc-show-results .solr-search-layout { display:block !important; }
   .bb-footer-grid>div:last-child { grid-column:auto; }
 }
 
+/* Reference-style animated menu hover shared by all inner pages. */
+@media (min-width:1201px) {
+  .bb-nav-links a {
+    position:relative;
+    padding-bottom:13px;
+    transition:color .22s ease,transform .22s ease;
+  }
+  .bb-nav-links a::after {
+    content:"";
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:3px;
+    height:2px;
+    border-radius:2px;
+    background:var(--bb-rose,#e92d62);
+    transform:scaleX(0);
+    transform-origin:center;
+    transition:transform .26s cubic-bezier(.2,.75,.25,1);
+  }
+  .bb-nav-links a:hover,
+  .bb-nav-links a:focus-visible {
+    color:var(--bb-rose,#e92d62);
+    transform:translateY(-1px);
+  }
+  .bb-nav-links a:hover::after,
+  .bb-nav-links a:focus-visible::after,
+  .bb-nav-links a[aria-current="page"]::after {
+    transform:scaleX(1);
+  }
+}
+@media (max-width:1200px) {
+  .bb-nav-links a {
+    transition:background-color .2s ease,color .2s ease;
+  }
+  .bb-nav-links a:hover,.bb-nav-links a:focus-visible {
+    background:#fff0f5;
+    color:var(--bb-rose,#e92d62);
+  }
+}
+@media (prefers-reduced-motion:reduce) {
+  .bb-nav-links a,.bb-nav-links a::after { transition:none!important; }
+}

@@ -1,446 +1,83 @@
-<!DOCTYPE html>
-<html lang="en-US">
-
-
-<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-
-<!-- 
-	build by get.typo3.org/sitepackage
-
-	This website is powered by TYPO3 - inspiring people to share!
-	TYPO3 is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL.
-	TYPO3 is copyright 1998-2026 of Kasper Skaarhoj. Extensions are copyright of their respective owners.
-	Information and contribution at https://typo3.org/
--->
-
-
-<title>Gelin Çiçeği | US Wedding Planning</title>
-<meta http-equiv="x-ua-compatible" content="IE=edge">
-<meta name="generator" content="TYPO3 CMS">
-<meta name="description" content="Plan your US wedding with local vendor search, a personal USD budget, a wedding planning guide and a drag-and-drop seating planner.">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="index,follow">
-<meta name="apple-mobile-web-app-capable" content="no">
-
-
-<link rel="stylesheet" href="typo3temp/assets/css/7015c8c4ac5ff815b57530b221005fc62e08.css?1772740999" media="all">
-<link rel="stylesheet" href="_assets/90b18b54e9b9f1b491b9423745702b08/Css/chat4dce.css?1777106052" media="all">
-<link rel="stylesheet" href="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/Css/appf8da.css?1773420060" media="all">
-<link rel="stylesheet" href="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/Css/loaderbd28.css?1771683861" media="all">
-<link rel="stylesheet" href="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/Css/layoutec65.css?1775588051" media="all">
-<link rel="stylesheet" href="vendor/unpkg.com/maplibre-gl%405.2.0/dist/maplibre-gl.css" media="all">
-<link rel="stylesheet" href="_assets/20527c9d58754ce0a4ed8f67ae0a84c8/Css/gelincicegi-map4022.css?1775843253" media="all">
-
-
-
-
-
-
-
-
-<link rel="canonical" href="index.html">
-
-<link rel="icon" type="image/png" href="assets/brand/favicon-rose.png">
-<link rel="apple-touch-icon" href="assets/brand/favicon-rose.png">
-<link rel="stylesheet" href="assets/site.css?v=gc-ui-20261017">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Discover U.S. wedding venues, bridal boutiques, florists, photographers, caterers and wedding planning tools at Gelin Çiçeği.">
+  <title>Gelin Çiçeği | Wedding Vendor Search &amp; Planning</title>
+  <link rel="canonical" href="https://gelin-cicegi.mighty-chair-7509.chatgpt.site/">
+  <link rel="icon" type="image/png" href="assets/brand/favicon-rose.png">
+  <link rel="apple-touch-icon" href="assets/brand/favicon-rose.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="assets/home.css?v=gc-clean-20261017-2">
+  <script defer src="assets/home.js?v=gc-clean-20261017-2"></script>
 </head>
 <body>
-<!-- Pre loader -->
-<div id="loader" class="loader">
-    <div class="plane-container">
-        <div class="l-s-2 blink">LOADING</div>
+  <header class="bb-header">
+    <nav class="bb-nav" aria-label="Main navigation">
+      <button class="bb-menu-toggle" type="button" aria-controls="bb-navigation" aria-expanded="false">
+        <span>Menu</span>
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+      <div class="bb-nav-links" id="bb-navigation">
+        <a href="search.html" aria-current="page">Search</a>
+        <a href="harita.html">Map</a>
+        <a href="oturma-plani.html">Create Seating Plan</a>
+        <a href="danisman.html">Wedding Advisor</a>
+        <a href="wedding-info.html">Wedding Info Assistant</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="bb-main" id="main-content">
+    <section class="bb-hero" aria-label="Find wedding vendors">
+      <a class="bb-brand" href="index.html" aria-label="Gelin Çiçeği home">
+        <span class="bb-wordmark" lang="tr">gelin çiçeği</span>
+      </a>
+      <div class="bb-search-area">
+        <form class="bb-search-form" id="vendor-search-form" method="get" action="search.html" role="search">
+          <label class="sr-only" for="vendor-search-input">Search wedding vendors by service, name or city</label>
+          <div class="bb-search-wrap">
+            <input class="bb-search-input" id="vendor-search-input" type="search" name="q" maxlength="100" autocomplete="off" spellcheck="false" placeholder="Wedding venues, bridal wear, photographers..." aria-controls="vendor-suggestions">
+            <button class="bb-search-button" type="submit" aria-label="Search wedding vendors">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10.5" fill="white"/>
+                <path d="M7.5 12h8.5m-3.8-3.8L16 12l-3.8 3.8" stroke="#171d78" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <span>Search</span>
+            </button>
+            <div class="bb-suggestions" id="vendor-suggestions" role="listbox" aria-label="Vendor suggestions" hidden></div>
+          </div>
+        </form>
+        <p class="bb-hint">Find wedding businesses across the United States by name, category or city.</p>
+      </div>
+    </section>
+
+    <section id="vendor-results" class="bb-results" aria-label="Vendor search results" aria-live="polite" hidden></section>
+  </main>
+
+  <footer class="bb-footer">
+    <div class="bb-footer-grid">
+      <div>
+        <h2>Explore</h2>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms of Use</a>
+        <a href="for-vendors.html">For Businesses</a>
+      </div>
+      <div>
+        <h2>Knowledge Base</h2>
+        <a href="features.html">Features</a>
+        <a href="wedding-info.html">Wedding Info Assistant</a>
+      </div>
+      <div>
+        <h2>About Us</h2>
+        <a href="our-values.html">Our Values</a>
+        <a href="index.html">Gelin Çiçeği</a>
+      </div>
     </div>
-</div>
-
-<div id="app" class="paper-loading">
-
-<header class="bb-header"><nav class="bb-nav" aria-label="Main navigation"><button class="bb-menu-toggle" type="button" aria-controls="bb-navigation" aria-expanded="false"><span>Menu</span><span aria-hidden="true">☰</span></button><div class="bb-nav-links" id="bb-navigation"><a href="search.html" aria-current="page">Search</a><a href="harita.html">Map</a><a href="oturma-plani.html">Create Seating Plan</a><a href="danisman.html">Wedding Advisor</a><a href="wedding-info.html">Wedding Info Assistant</a></div></nav></header>
-
-<main id="main-content">
-    
-
-    
-    <section class="p-b-50 text-center animatedParent animateOnce solr-search-intro-layout" data-bg-possition="center">
-    <div class="container-fluid px-4">
-        <div class="row">
-            
-                
-    
-
-            <div id="c7" class="frame frame-default frame-type-solr_pi_search frame-layout-0">
-                
-                
-                    
-
-
-
-                
-                
-                    
-
-    
-
-
-
-                
-                
-
-    
-    <div class="tx_solr">
-	
-	<div id="tx-solr-search" class="d-grid gap-3 tx-solr-search-plugin tx-solr-search-form-plugin">
-		
-	<div class="tx-solr-search-form tx-solr-search-form--empty">
-		<form method="get" id="tx-solr-search-form-pi-results" action="search.html" data-suggest-header="Top Results" accept-charset="utf-8">
-			
-
-			<div class="tx-solr-search-form__inner col-12 text-center px-3">
-				<a class="bb-search-brand" href="index.html" aria-label="Gelin Çiçeği home"><span class="bb-wordmark bb-wordmark-text" lang="tr">gelin çiçeği</span></a>
-				
-				<div class="masthead p-2">
-					<div class="input-group tx-solr-search-inline tx-solr-autocomplete">
-						<input type="text" id="solr-typewriter-input" class="search-field light tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus" name="q" value="" placeholder="" maxlength="100" />
-						<button type="submit" class="btn btn-success btn-lg r-30 tx-solr-submit" aria-label="Search">
-							<i class="icon icon-arrow-circle-right"></i>
-							Search
-						</button>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-
-	</div>
-
-	
-</div>
-
-
-                
-                    
-
-
-
-                
-                
-                    
-
-
-
-                
-            </div>
-
-        
-
-
-            
-        </div>
-    </div>
-</section>
-
-    <section class="p-b-50 text-center animatedParent animateOnce solr-search-layout" data-bg-possition="center">
-    <div class="container-fluid px-4">
-        <div class="row solr-search-layout__row">
-            <div class="col-md-6 col-solr-main solr-search-layout__main">
-                
-                    
-    
-
-            <div id="c8" class="frame frame-default frame-type-solr_pi_results frame-layout-0">
-                
-                
-                    
-
-
-
-                
-                
-                    
-
-    
-
-
-
-                
-                
-
-    
-    <div class="tx_solr">
-	
-	<div id="tx-solr-search" class="d-grid gap-3 tx-solr-search-plugin tx-solr-search-results-plugin tx-solr-search-state tx-solr-search--initial tx-solr-no-results">
-
-		<div class="row">
-			<div class="col-12">
-				
-			</div>
-		</div>
-
-		<div class="tx-solr-search-form">
-			
-	<div class="tx-solr-search-form tx-solr-search-form--empty">
-		<form method="get" id="tx-solr-search-form-pi-results-secondary" action="search.html" data-suggest-header="Top Results" accept-charset="utf-8">
-			
-
-			<div class="tx-solr-search-form__inner col-12 text-center px-3">
-				<a class="bb-search-brand" href="index.html" aria-label="Gelin Çiçeği home"><span class="bb-wordmark bb-wordmark-text" lang="tr">gelin çiçeği</span></a>
-				
-				<div class="masthead p-2">
-					<div class="input-group tx-solr-search-inline tx-solr-autocomplete">
-						<input type="text" id="solr-typewriter-input-secondary" class="search-field light tx-solr-q js-solr-q tx-solr-suggest tx-solr-suggest-focus" name="q" value="" placeholder="" maxlength="100" />
-						<button type="submit" class="btn btn-success btn-lg r-30 tx-solr-submit" aria-label="Search">
-							<i class="icon icon-arrow-circle-right"></i>
-							Search
-						</button>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-
-		</div>
-
-		
-
-		
-
-		<div class="row">
-			<div class="col-md-12">
-				
-						
-					
-
-				
-
-				
-			</div>
-		</div>
-
-		<div class="row">
-			<div class="col-md-12 d-grid gap-3">
-				
-			</div>
-		</div>
-
-	</div>
-
-	
-	<div id="tx-solr-search-functions" class="d-grid gap-3">
-		
-
-		<div class="hidden-xs">
-			
-		</div>
-		<div class="hidden-xs">
-			
-		</div>
-	</div>
-
-</div>
-
-
-                
-                    
-
-
-
-                
-                
-                    
-
-
-
-                
-            </div>
-
-        
-
-
-                
-            </div>
-            <div class="col-md-6 col-solr-sidebar solr-search-layout__sidebar">
-                
-                    
-    
-
-            <div id="c14" class="frame frame-default frame-type-html frame-layout-0">
-                
-                
-                    
-
-
-
-                
-                
-                
-
-    <div class="mt-6">
-    
-</div>
-
-
-                
-                    
-
-
-
-                
-                
-                    
-
-
-
-                
-            </div>
-
-        
-
-
-                
-                    
-    
-
-            <div id="c11" class="frame frame-default frame-type-turqey_planner frame-layout-0">
-                
-                
-                    
-
-
-
-                
-                
-                    
-
-    
-
-
-
-                
-                
-
-    
-    
-
-<div class="tx-turqey-planner search-planner-cta" data-planner-state="idle">
-	<div class="search-planner-cta__eyebrow">Quick Planner</div>
-	<h3 class="search-planner-cta__title">Build your wedding plan in 60 seconds</h3>
-	<p class="search-planner-cta__text">Get a starting roadmap based on your budget, city and priorities.</p>
-
-	<form data-planner-inline="1" class="planner-widget-form" action="search.html" method="post">
-<div>
-<input type="hidden" name="tx_turqey_planner[__referrer][@extension]" value="Turqey" >
-<input type="hidden" name="tx_turqey_planner[__referrer][@controller]" value="Planner" >
-<input type="hidden" name="tx_turqey_planner[__referrer][@action]" value="index" >
-<input type="hidden" name="tx_turqey_planner[__referrer][arguments]" value="YTowOnt9b320a9576a23e37965003a49d5629eceb1781372" >
-<input type="hidden" name="tx_turqey_planner[__referrer][@request]" value="{&quot;@extension&quot;:&quot;Turqey&quot;,&quot;@controller&quot;:&quot;Planner&quot;,&quot;@action&quot;:&quot;index&quot;}bb29142d9b4a4b4b54ab1d15f10631b961a1ad04" >
-<input type="hidden" name="tx_turqey_planner[__trustedProperties]" value="{&quot;city&quot;:1,&quot;budget&quot;:1,&quot;guests&quot;:1,&quot;weddingType&quot;:1,&quot;priority&quot;:1}2bca9fa81faf2aa2c7fbbfab374f512d6a7ae756" >
-</div>
-
-		<div class="planner-widget-form__grid">
-			<div class="planner-widget-form__field">
-				<label for="planner-city">City</label>
-				<select id="planner-city" name="tx_turqey_planner[city]"><option value="">Choose a city</option>
-<option value="new-york">New York, NY</option>
-<option value="los-angeles">Los Angeles, CA</option>
-<option value="miami">Miami, FL</option>
-<option value="chicago">Chicago, IL</option>
-<option value="saratoga">Saratoga Springs, NY</option>
-</select>
-			</div>
-			<div class="planner-widget-form__field">
-				<label for="planner-budget">Budget</label>
-				<select id="planner-budget" name="tx_turqey_planner[budget]"><option value="">Choose a budget</option>
-<option value="low">Budget friendly</option>
-<option value="mid">Mid-range budget</option>
-<option value="high">Premium budget</option>
-</select>
-			</div>
-			<div class="planner-widget-form__field">
-				<label for="planner-guests">Guests</label>
-				<select id="planner-guests" name="tx_turqey_planner[guests]"><option value="">Choose guest count</option>
-<option value="small">Up to 80 guests</option>
-<option value="medium">80–180 guests</option>
-<option value="large">180+ guests</option>
-</select>
-			</div>
-			<div class="planner-widget-form__field">
-				<label for="planner-type">Celebration</label>
-				<select id="planner-type" name="tx_turqey_planner[weddingType]"><option value="">Choose a celebration</option>
-<option value="nikah">Intimate ceremony</option>
-<option value="kina-nikah">Ceremony &amp; rehearsal dinner</option>
-<option value="dugun">Full wedding</option>
-</select>
-			</div>
-			<div class="planner-widget-form__field planner-widget-form__field--wide">
-				<label for="planner-priority">Priority</label>
-				<select id="planner-priority" name="tx_turqey_planner[priority]"><option value="">Choose a priority</option>
-<option value="venue">Venue</option>
-<option value="style">Bridal wear &amp; style</option>
-<option value="media">Photography &amp; video</option>
-<option value="budget">Budget management</option>
-</select>
-			</div>
-		</div>
-
-		<div class="search-planner-cta__actions">
-			<input class="search-planner-cta__button planner-widget-form__submit" type="submit" value="Create My Plan" />
-		</div>
-	</form>
-
-	<div class="planner-widget-result-host">
-		
-	</div>
-</div>
-
-
-
-
-                
-                    
-
-
-
-                
-                
-                    
-
-
-
-                
-            </div>
-
-        
-
-
-                
-            </div>
-        </div>
-    </div>
-</section>
-
-
-
-
-</main>
-
-</div><!-- /app -->
-<footer class="bb-footer"><div class="bb-footer-grid">
-<div><h2>Explore</h2><a href="privacy.html">Privacy</a><a href="terms.html">Terms of Use</a><a href="for-vendors.html">For Businesses</a></div>
-<div><h2>Knowledge Base</h2><a href="features.html">Features</a></div>
-<div><h2>About Us</h2><a href="our-values.html">Our Values</a></div>
-</div><p class="bb-copyright">© 2026 Gelin Çiçeği. All rights reserved.</p></footer>
-
-<script src="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/JavaScript/appcc78.js?1771681566"></script>
-<script src="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/JavaScript/main94c6.js?v=bloom-1"></script>
-<script src="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/JavaScript/typewriter4c0d.js?v=bloom-1"></script>
-<script src="vendor/unpkg.com/maplibre-gl%405.2.0/dist/maplibre-gl.js"></script>
-
-
-
-<script src="assets/search.js?v=gc-ui-20261017"></script>
-<script src="assets/site.js?v=gc-ui-20261017" defer></script>
+    <p class="bb-copyright">© 2026 Gelin Çiçeği. All rights reserved.</p>
+  </footer>
 </body>
-
-
 </html>

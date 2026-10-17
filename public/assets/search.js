@@ -38,7 +38,7 @@
         oldResults.classList.remove('tx-solr-search--initial', 'tx-solr-no-results');
         oldResults.classList.add('tx-solr-search--results');
       }
-      intro.style.display='none'; layout.style.display='';
+      document.body.classList.add('gc-show-results'); intro.style.display='none'; layout.style.display='';
       results.replaceChildren(el('p','gc-search-status','Searching vendors…'));
       results.setAttribute('aria-busy','true');
       if (controller) controller.abort(); controller = new AbortController();
@@ -103,7 +103,7 @@
       input.addEventListener('keydown',e=>{if(e.key==='Escape')suggestions.hidden=true;});
       form.addEventListener('focusout',()=>setTimeout(()=>{if(!form.contains(document.activeElement))suggestions.hidden=true;},150));
     });
-    window.addEventListener('popstate',()=>{state=new URLSearchParams(location.search);run();});
+    window.addEventListener('popstate',()=>{state=new URLSearchParams(location.search);if(state.has('q')||state.has('city')||state.has('category')) run(); else {document.body.classList.remove('gc-show-results');intro.style.display='';layout.style.display='none';}});
     if(state.has('q')||state.has('city')||state.has('category'))run();
   });
 })();

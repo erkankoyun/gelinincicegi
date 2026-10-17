@@ -12,5 +12,5 @@
   });
   links.addEventListener('click', event => { if (event.target.closest('a')) close(); });
   document.addEventListener('keydown', event => { if (event.key === 'Escape') { close(); if (header.contains(document.activeElement)) toggle.focus(); } });
-  window.addEventListener('resize', () => { if (window.innerWidth > 1000) close(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 1200) close(); });
 })();

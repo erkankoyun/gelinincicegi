@@ -207,6 +207,11 @@
       } catch (error) { if (error.name !== 'AbortError') hideSuggestions(); }
     }, 300);
   });
+  // Allow the Space key to enter a normal space in search queries even if a
+  // third-party autocomplete listener attempts to intercept that keystroke.
+  input.addEventListener('keydown', event => {
+    if (event.key === ' ' || event.code === 'Space') event.stopImmediatePropagation();
+  }, true);
   input.addEventListener('keydown', event => { if (event.key === 'Escape') hideSuggestions(); });
   document.addEventListener('click', event => {
     if (!form.contains(event.target)) hideSuggestions();

@@ -25,7 +25,7 @@
       last=data;if(data.session_id){session=data.session_id;localStorage.setItem(key,session);}
       const progress=$('.gd-funnel__progress-fill');if(progress)progress.style.width=(data.is_complete?100:Math.min(95,(data.question_count||1)*16))+'%';
       const step=$('.gd-funnel__step-num');if(step)step.textContent=String(data.question_count||1);
-      const badge=$('.gd-funnel__badge');if(badge)badge.textContent=(data.advisor_mode==='ai'?'Wedding Advisor':'Wedding Planning Guide')+' · Gelin Çiçeği';
+      const badge=$('.gd-funnel__badge');if(badge)badge.textContent=(data.advisor_mode==='ai'?'Wedding Advisor':'Wedding Planning Guide')+' · Bridal Bloom';
       if(data.is_complete){
         const stage=data.needs_email?'email':'complete';rich(phases[stage]?.querySelector('.gd-funnel__rich-reply'),data.reply);phase(stage);
         if(stage==='complete'){
@@ -49,7 +49,7 @@
     chatInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!busy&&chatInput.value.trim()){e.preventDefault();chatForm.requestSubmit();}});
     chatForm.addEventListener('submit',e=>{e.preventDefault();const message=chatInput.value.trim();if(!message)return;action(async()=>{const data=await api('advisor_chat',{message});append('user',message);append('assistant',data.reply);chatInput.value='';});});
     root.querySelectorAll('.gd-funnel__reset-btn').forEach(button=>button.addEventListener('click',()=>action(async()=>{if(session)await api('reset');session='';last=null;localStorage.removeItem(key);name.value='';answer.value='';email.value='';phone.value='';historyBox.replaceChildren();phase('intro');})));
-    pdf.addEventListener('click',()=>action(async()=>{const blob=await api('download_pdf');const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='gelin-cicegi-wedding-plan.pdf';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}));
+    pdf.addEventListener('click',()=>action(async()=>{const blob=await api('download_pdf');const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='bridal-bloom-wedding-plan.pdf';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}));
     sendEmail.addEventListener('click',()=>action(async()=>{const data=await api('email_plan');if(emailStatus)emailStatus.textContent=data.message;}));
     const mode=document.createElement('p');mode.className='gd-advisor__mode';mode.textContent='Planning guide';chatForm.before(mode);
     phase('intro');controls();

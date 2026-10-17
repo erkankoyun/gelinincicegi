@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Gelin Çiçeği",
+  title: "Bridal Bloom",
   description: "US wedding vendors, personal wedding planning and a drag-and-drop seating planner.",
   icons: {
     icon: "/assets/brand/favicon-rose.png",

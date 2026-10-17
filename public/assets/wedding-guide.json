@@ -1,0 +1,372 @@
+[
+  {
+    "id": "budget",
+    "title": "How should I organize my wedding budget?",
+    "keywords": [
+      "budget",
+      "budgets",
+      "cost",
+      "costs",
+      "price",
+      "prices",
+      "money",
+      "spend",
+      "afford",
+      "expensive"
+    ],
+    "answer": "Start with your total budget in USD and your guest count. List your priorities before comparing vendors.\nAn example starting split is 45% venue and catering, 12% photography and video, 10% attire, 8% flowers and decor, 8% music, 7% other expenses and 10% contingency. These are planning allocations, not current vendor prices. Ask for written quotes that include taxes, service charges and mandatory extras.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "venues",
+    "title": "What should I ask a wedding venue?",
+    "keywords": [
+      "venue",
+      "venues",
+      "location",
+      "locations",
+      "reception",
+      "hall",
+      "space"
+    ],
+    "answer": "Confirm your date, seated capacity and the services included. Ask about catering requirements, setup and cleanup, accessibility, parking, noise restrictions and a bad-weather plan.\nCompare at least three written quotes using the same guest count and service scope. Check cancellation, payment and overtime terms before booking. Confirm availability directly with the venue.",
+    "links": [
+      {
+        "href": "search.html?category=venue",
+        "label": "Find listed venues"
+      }
+    ]
+  },
+  {
+    "id": "timeline",
+    "title": "Where do I start with the wedding timeline?",
+    "keywords": [
+      "timeline",
+      "schedule",
+      "checklist",
+      "first steps",
+      "start",
+      "months",
+      "date",
+      "planning order",
+      "when should"
+    ],
+    "answer": "Start with your priorities, total budget, approximate guest count and preferred location. Choose your date and venue together, then coordinate key vendors, attire and invitations.\nAs the day approaches, confirm the final headcount, seating, dietary needs and vendor arrival times in one shared schedule. Set deadlines using your actual vendor contracts rather than a universal timetable.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "bridal",
+    "title": "How do I prepare for a bridal appointment?",
+    "keywords": [
+      "bridal",
+      "wedding dress",
+      "gown",
+      "gowns",
+      "alteration",
+      "alterations",
+      "fitting",
+      "fittings",
+      "boutique"
+    ],
+    "answer": "Bring a few inspiration images, your wedding date, venue setting and a total attire budget. Ask about order lead times, fittings, alterations and pickup arrangements. Include shoes and accessories in your budget.\nConfirm sizing, return terms and delivery commitments with the boutique before ordering. Your dress should suit both your celebration and your comfort.",
+    "links": [
+      {
+        "href": "search.html?category=bridal",
+        "label": "Browse bridal boutiques"
+      }
+    ]
+  },
+  {
+    "id": "guest-attire",
+    "title": "What should I wear as a wedding guest?",
+    "keywords": [
+      "guest outfit",
+      "guest outfits",
+      "guest attire",
+      "dress code",
+      "black tie",
+      "formal",
+      "tuxedo",
+      "suit",
+      "attending",
+      "what should i wear",
+      "cocktail attire"
+    ],
+    "answer": "Start with the dress code on the invitation, then consider the venue, season and weather. For black tie, a tuxedo or formal evening outfit is a common choice; cocktail attire usually calls for a dressier suit, dress or comparable polished outfit.\nAvoid an all-white outfit unless the couple asks for it. Choose shoes that work with the venue surface. If a dress code or cultural expectation is unclear, ask the couple or their designated contact.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "gifts",
+    "title": "How do I choose a wedding gift?",
+    "keywords": [
+      "gift",
+      "gifts",
+      "registry",
+      "present",
+      "presents",
+      "cash",
+      "gift card"
+    ],
+    "answer": "Check whether the couple has a registry or has shared a preference for a gift, contribution or charitable donation. Choose an amount that fits your own budget; there is no universal amount every guest must spend.\nIf you buy off-registry, consider practicality and include a gift receipt when possible. Follow the couple’s instructions for delivery, and add a personal note.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "photography",
+    "title": "What should I ask a wedding photographer?",
+    "keywords": [
+      "photography",
+      "photographer",
+      "photographers",
+      "photo",
+      "photos",
+      "video",
+      "videographer",
+      "film"
+    ],
+    "answer": "Review a complete wedding gallery rather than only highlights. Ask about coverage hours, the team on the day, backup equipment, delivery timing and image usage rights.\nMake sure the written package explains any travel costs, overtime and optional albums. Coordinate key family photos and locations with your wedding-day schedule.",
+    "links": [
+      {
+        "href": "search.html?category=photography",
+        "label": "Find listed photographers"
+      }
+    ]
+  },
+  {
+    "id": "catering",
+    "title": "How do I plan food and dietary needs?",
+    "keywords": [
+      "catering",
+      "caterer",
+      "caterers",
+      "food",
+      "menu",
+      "meal",
+      "meals",
+      "allergy",
+      "allergies",
+      "vegetarian",
+      "dietary"
+    ],
+    "answer": "Choose a service style that fits your celebration and venue. Ask about tastings, portion counts, children’s meals, vegetarian options and how dietary needs will be handled. Confirm the final headcount deadline.\nGet staffing, rentals, beverages, taxes and service charges itemized in writing. Share dietary information with the caterer and label guest meals in the seating plan.",
+    "links": [
+      {
+        "href": "search.html?category=catering",
+        "label": "Browse listed caterers"
+      }
+    ]
+  },
+  {
+    "id": "flowers",
+    "title": "How do I plan wedding flowers and decor?",
+    "keywords": [
+      "flower",
+      "flowers",
+      "florist",
+      "florists",
+      "decor",
+      "decoration",
+      "decorations",
+      "bouquet"
+    ],
+    "answer": "Choose a few colors and visual priorities, such as bouquets, a ceremony focal point or table arrangements. Share venue photos, table sizes and an overall decor budget with the florist.\nAsk about seasonal alternatives, setup and collection times, delivery charges and rental return requirements. Check whether arrangements can be reused between the ceremony and reception.",
+    "links": [
+      {
+        "href": "search.html?category=florist",
+        "label": "Browse listed florists"
+      }
+    ]
+  },
+  {
+    "id": "seating",
+    "title": "How should I arrange the seating chart?",
+    "keywords": [
+      "seating",
+      "seat",
+      "seats",
+      "table",
+      "tables",
+      "guest list",
+      "guest count",
+      "headcount"
+    ],
+    "answer": "Start with your confirmed guest list, family and friend groups, and venue capacity. Identify guests who should sit together or apart. Leave room for accessible routes, high chairs and service aisles.\nUse the Seating Planner to add table groups, mark stage or aisle preferences, auto seat guests and fine-tune with drag and drop. Confirm the final layout with your venue.",
+    "links": [
+      {
+        "href": "oturma-plani.html",
+        "label": "Open the Seating Planner"
+      }
+    ]
+  },
+  {
+    "id": "music",
+    "title": "Should I choose a DJ or live music?",
+    "keywords": [
+      "music",
+      "dj",
+      "band",
+      "entertainment",
+      "dance",
+      "song",
+      "songs"
+    ],
+    "answer": "Choose based on the atmosphere you want, your space and your budget. Ask about performance hours, breaks, sound and lighting, setup needs and backup equipment.\nCheck venue noise limits and overtime charges. Share your entrance, first-dance and last-song choices, plus any must-play or do-not-play songs. Confirm who will make announcements.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "weather",
+    "title": "What is a good outdoor wedding rain plan?",
+    "keywords": [
+      "rain",
+      "weather",
+      "outdoor",
+      "outdoors",
+      "garden",
+      "beach",
+      "tent",
+      "heat",
+      "cold"
+    ],
+    "answer": "Ask the venue for a workable backup location that accommodates your full guest count and service needs. Decide who makes the weather call and when.\nCheck shelter, safe routes, ground conditions, power, lighting and guest comfort. Confirm any tent, heater or alternative-space arrangements in writing. Share the backup schedule with your vendors.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "beauty",
+    "title": "How do I plan wedding hair and makeup?",
+    "keywords": [
+      "hair",
+      "makeup",
+      "beauty",
+      "barber",
+      "barbers",
+      "salon",
+      "grooming",
+      "hairstyle",
+      "stylist"
+    ],
+    "answer": "Collect a few style references and ask the professional about trials, timing and the number of people they can accommodate. Clarify travel, early-start and extra-person fees.\nBuild a realistic preparation schedule with room for getting dressed and photos. Tell the professional about any relevant sensitivities when arranging services, and confirm the final look before the wedding day.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "transport",
+    "title": "How do I organize guest transportation?",
+    "keywords": [
+      "transport",
+      "transportation",
+      "shuttle",
+      "parking",
+      "hotel",
+      "hotels",
+      "travel",
+      "ride",
+      "car"
+    ],
+    "answer": "List the ceremony, reception and hotel locations, then check travel times and parking. If you arrange shuttles, specify pickup points, departure times, passenger counts and the final return trip.\nShare a clear transport note with guests and keep a contact person available. Confirm vehicle accessibility, service hours and any waiting or overtime charges directly with the provider.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "invitations",
+    "title": "What should our invitations include?",
+    "keywords": [
+      "invitation",
+      "invitations",
+      "rsvp",
+      "rsvps",
+      "invite",
+      "invites",
+      "plus one",
+      "plus ones",
+      "stationery"
+    ],
+    "answer": "Include the couple’s names, date, ceremony and reception locations, start times, dress code and a clear RSVP method and deadline. State plus-one or children’s arrangements consistently and kindly.\nSet the RSVP date with enough time to provide the caterer’s final count and complete seating. Use a wedding website or details card for travel information and updates.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "accessibility",
+    "title": "How can we make guests comfortable?",
+    "keywords": [
+      "accessibility",
+      "accessible",
+      "wheelchair",
+      "mobility",
+      "comfort",
+      "children",
+      "child",
+      "high chair"
+    ],
+    "answer": "Check step-free access, restrooms, seating distances and transport with the venue. Ask guests about practical access or dietary needs through an appropriate private channel.\nProvide clear directions and a designated contact. Keep aisles usable and plan high chairs or quieter seating where needed. Confirm specific accommodations directly with the venue and service providers.",
+    "links": [
+      {
+        "href": "danisman.html",
+        "label": "Create your wedding profile"
+      }
+    ]
+  },
+  {
+    "id": "contracts",
+    "title": "What should I confirm before booking a vendor?",
+    "keywords": [
+      "contract",
+      "contracts",
+      "book",
+      "booking",
+      "reservation",
+      "deposit",
+      "cancellation",
+      "cancel",
+      "refund",
+      "quote"
+    ],
+    "answer": "Request a written description of services, dates, staffing, deliverables and the full price, including mandatory extras. Review payment deadlines, cancellation terms, postponement arrangements and overtime charges.\nConfirm current availability directly with the business. Bridal Bloom does not reserve dates, take payments or verify live prices for vendors.",
+    "links": [
+      {
+        "href": "search.html?q=",
+        "label": "Explore listed vendors"
+      }
+    ]
+  }
+]

@@ -1,4 +1,4 @@
-# Gelin Çiçeği — US Wedding Planning
+# Bridal Bloom — US Wedding Planning
 
 English-language US wedding vendor search, a five-step wedding planning guide, PDF plans, a vendor map and a seating planner. The existing visual design and the rose favicon supplied by the owner are preserved.
 
@@ -34,3 +34,5 @@ AI Gateway model catalog: https://ai-gateway.vercel.sh/v1/models
 Resend API reference: https://resend.com/docs/api-reference/emails/send-email
 
 The original site's private server code and crawled vendor index were not included in the supplied archive. Migrating that coverage requires a source/database export or documented API access from its owner. This independent implementation uses the starter US directory described above. Real AI and email credentials are not configured in this version.
+
+The reference-style English navigation includes a standalone wedding information guide and real footer destinations. The centered script wordmark is Bridal Bloom; the owner-supplied rose favicon is preserved.

@@ -5,8 +5,8 @@ import { planText, type Profile } from "./planning";
 
 export async function createPlanPdf(profile: Profile) {
   const doc = await PDFDocument.create();
-  doc.setTitle("Gelin Çiçeği — Wedding Plan");
-  doc.setAuthor("Gelin Çiçeği");
+  doc.setTitle("Bridal Bloom — Wedding Plan");
+  doc.setAuthor("Bridal Bloom");
   doc.registerFontkit(fontkit);
   const bytes = Uint8Array.from(atob(pdfFontBase64), char => char.charCodeAt(0));
   const font = await doc.embedFont(bytes, { subset: true });
@@ -14,7 +14,7 @@ export async function createPlanPdf(profile: Profile) {
   const safe = (s: string) => Array.from(s).map(c => chars.has(c.codePointAt(0)!) ? c : "").join("");
   let page = doc.addPage([595.28, 841.89]);
   let y = 785;
-  const addHeader = () => { page.drawText("Gelin Çiçeği", { x: 45, y, font, size: 22, color: rgb(0.67,0.12,0.29) }); y -= 34; };
+  const addHeader = () => { page.drawText("Bridal Bloom", { x: 45, y, font, size: 22, color: rgb(0.67,0.12,0.29) }); y -= 34; };
   addHeader();
   const text = safe(planText(profile).replace(/\*\*/g, ""));
   for (const paragraph of text.split("\n")) {
@@ -41,6 +41,6 @@ export async function createPlanPdf(profile: Profile) {
     }
   }
   const pages = doc.getPages();
-  pages.forEach((p,index)=>p.drawText(`${index+1} / ${pages.length}  •  Gelin Çiçeği`, { x: 45, y: 28, font, size: 8, color: rgb(0.45,0.45,0.45) }));
+  pages.forEach((p,index)=>p.drawText(`${index+1} / ${pages.length}  •  Bridal Bloom`, { x: 45, y: 28, font, size: 8, color: rgb(0.45,0.45,0.45) }));
   return doc.save();
 }

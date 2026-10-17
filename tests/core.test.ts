@@ -52,6 +52,6 @@ test("download is a valid English PDF with Unicode name support",async()=>{
   const bytes=await createPlanPdf(profile);
   const pdf=await PDFDocument.load(bytes);
   assert.ok(pdf.getPageCount()>=1);
-  assert.equal(pdf.getTitle(),"Gelin Çiçeği — Wedding Plan");
+  assert.equal(pdf.getTitle(),"Bridal Bloom — Wedding Plan");
   await writeFile(process.env.GC_TEST_PDF_PATH || join(tmpdir(),"gelin-cicegi-test-plan.pdf"),bytes);
 });

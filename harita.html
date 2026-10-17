@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="tr-TR">
+
+
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="utf-8">
+
+<!-- 
+	build by get.typo3.org/sitepackage
+
+	This website is powered by TYPO3 - inspiring people to share!
+	TYPO3 is a free open source Content Management Framework initially created by Kasper Skaarhoj and licensed under GNU/GPL.
+	TYPO3 is copyright 1998-2026 of Kasper Skaarhoj. Extensions are copyright of their respective owners.
+	Information and contribution at https://typo3.org/
+-->
+
+
+<title>Harita | Gelin Çiçeği</title>
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="generator" content="TYPO3 CMS">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="apple-mobile-web-app-capable" content="no">
+
+
+<link rel="stylesheet" href="typo3temp/assets/css/7015c8c4ac5ff815b57530b221005fc62e08.css?1772740999" media="all">
+<link rel="stylesheet" href="_assets/90b18b54e9b9f1b491b9423745702b08/Css/chat4dce.css?1777106052" media="all">
+<link rel="stylesheet" href="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/Css/appf8da.css?1773420060" media="all">
+<link rel="stylesheet" href="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/Css/loaderbd28.css?1771683861" media="all">
+<link rel="stylesheet" href="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/Css/layoutec65.css?1775588051" media="all">
+<link rel="stylesheet" href="vendor/unpkg.com/maplibre-gl%405.2.0/dist/maplibre-gl.css" media="all">
+<link rel="stylesheet" href="_assets/20527c9d58754ce0a4ed8f67ae0a84c8/Css/gelincicegi-map4022.css?1775843253" media="all">
+
+
+
+
+
+
+
+<link rel="canonical" href="harita.html">
+<link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+<!-- Pre loader -->
+<div id="loader" class="loader">
+    <div class="plane-container">
+        <div class="l-s-2 blink">LOADING</div>
+    </div>
+</div>
+
+<div id="app" class="paper-loading">
+
+<div class="nav-sticky">
+    <!-- Header -->
+    <nav class="mainnav navbar navbar-default justify-content-between">
+    <div class="container relative">
+        <a class="offcanvas dl-trigger paper-nav-toggle" data-toggle="offcanvas"
+           aria-expanded="false" aria-label="Toggle navigation">
+            <i></i>
+        </a>
+        <a class="navbar-brand" href="search.html">
+            <img class="d-inline-block align-top" alt="Gelin Çiçeği" src="assets/brand/gelin-cicegi.svg">
+        </a>
+        <div class="paper_menu">
+            <div id="dl-menu" class="xv-menuwrapper responsive-menu">
+                <ul class="dl-menu align-items-center">
+                    
+                        <li class="">
+                            <a href="search.html">Ara</a>
+                            
+                        </li>
+                    
+                        <li class="active">
+                            <a href="harita.html">Harita</a>
+                            
+                        </li>
+                    
+                        <li class="">
+                            <a href="oturma-plani.html">Oturma Planı Oluştur</a>
+                            
+                        </li>
+                    
+                        <li class="">
+                            <a href="danisman.html">danışman</a>
+                            
+                        </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+</div>
+
+<main id="main-content">
+    
+
+    
+    
+<div class="gelincicegi-map-app app-shell">
+    <div id="gelincicegi-map"></div>
+    <div class="route-info-bar hidden-bar" id="gelincicegi-routeInfo">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span id="gelincicegi-routeDist"></span>
+        <span class="route-sep">·</span>
+        <span id="gelincicegi-routeDur"></span>
+        <button class="route-clear-btn" type="button" id="gelincicegi-routeClear">&#x2715;</button>
+    </div>
+
+    <aside class="places-panel">
+        <div class="panel-header">
+            <div class="panel-brand">Gelin Çiçeği</div>
+            <div class="panel-count">Brautmode Istanbul</div>
+            <div class="panel-subtitle">2 ausgewählte Boutiquen</div>
+        </div>
+        <div class="places-list" id="gelincicegi-placesList"></div>
+    </aside>
+
+    <section class="detail-overlay hidden" id="gelincicegi-detailOverlay" aria-hidden="true">
+        <button class="back-btn" id="gelincicegi-closeDetailBtn" type="button">Zurück zur Liste</button>
+        <div class="detail-image" id="gelincicegi-detailImage">
+            <button class="slider-arrow slider-prev" id="gelincicegi-sliderPrev" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+            <button class="slider-arrow slider-next" id="gelincicegi-sliderNext" type="button"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+            <div class="dots" id="gelincicegi-sliderDots"></div>
+        </div>
+        <div class="detail-body">
+            <h2 id="gelincicegi-detailName"></h2>
+            <div class="detail-meta">
+                <span class="star">★</span>
+                <span id="gelincicegi-detailRating"></span> •
+                <span id="gelincicegi-detailType"></span>
+            </div>
+
+            <div class="chip-row">
+                <button class="mini-chip active" id="gelincicegi-btnDirections" type="button">Wegbeschreibung</button>
+                <button class="mini-chip" id="gelincicegi-btnWebsite" type="button">Website</button>
+                <button class="mini-chip" id="gelincicegi-btnCall" type="button">Anrufen</button>
+            </div>
+
+            <div class="status-row">
+                <span class="icon">◔</span>
+                <span id="gelincicegi-detailStatus"></span>
+            </div>
+            <div class="hours-wrap" id="gelincicegi-detailHours"></div>
+            <div class="info-row">
+                <span class="icon">⌖</span>
+                <span id="gelincicegi-detailAddress"></span>
+            </div>
+            <div class="info-row">
+                <span class="icon">✆</span>
+                <span id="gelincicegi-detailPhone"></span>
+            </div>
+
+            <div class="detail-copy" id="gelincicegi-detailDescription"></div>
+
+            <div class="detail-copy" id="gelincicegi-detailOffer"></div>
+        </div>
+    </section>
+</div>
+
+<script>
+    window.gelincicegiMapShops = [{"id": "shop-2", "name": "Erkanin Yeri", "rating": 5, "type": "Coffee Shop", "status": "Mo-Fr: 09:00-20:00\r\nSa: Mo-Fr: 09:00-16:00\r\nSo:-", "closed": false, "coords": [41.01, 28.96], "address": "Kahveci Erkan Sk. 25 34568 Beyoglu", "phone": "0212-65478952", "description": "\u003Ch2\u003ELorem ipsum dolor sit amet\u003C/h2\u003E\r\n\u003Cp\u003Econsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\u003C/p\u003E", "offer": "\u003Ch2\u003ELorem ipsum dolor sit amet\u003C/h2\u003E\r\n\u003Cp\u003Econsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\u003C/p\u003E", "website": "oturma-plani.html", "image": "fileadmin/user_upload/andrew-neel-he22MeGX11o-unsplash.jpg", "images": ["fileadmin/user_upload/arren-mills-ypTBFSN-9dk-unsplash.jpg", "fileadmin/user_upload/ante-samarzija-lsmu0rUhUOk-unsplash.jpg"]}, {"id": "shop-1", "name": "Mürvetin Yeri", "rating": 5, "type": "Bridal Shop", "status": "Mo-Fr: 09:00-20:00\r\nSa: 10:00-14:00", "closed": false, "coords": [41.02, 28.98], "address": "Pazar Sk. 221 34587 Caddebostan", "phone": "0212-65125478", "description": "\u003Ch2\u003ELorem ipsum dolor sit amet\u003C/h2\u003E\r\n\u003Cp class=\"lead\"\u003Econsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\u003C/p\u003E", "offer": "\u003Ch2\u003ELorem ipsum dolor sit amet\u003C/h2\u003E\r\n\u003Cp\u003Econsetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.\u003C/p\u003E", "website": "oturma-plani.html", "image": "fileadmin/user_upload/alice-pasqual-qc_bU3wuf04-unsplash.jpg", "images": ["fileadmin/user_upload/anh-nguyen-HycIct9V-DM-unsplash.jpg", "fileadmin/user_upload/andrew-neel-he22MeGX11o-unsplash.jpg", "fileadmin/user_upload/andrew-neel-cckf4TsHAuw-unsplash.jpg"]}];
+</script>
+
+
+
+
+
+
+</main>
+
+</div><!-- /app -->
+<footer>
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-6 col-lg-3">
+                <h6>Keşfet</h6>
+                <ul class="footer-links">
+                    <li><a href="harita.html">Gizlilik</a></li>
+                    <li><a href="harita.html">Kullanım</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-3">
+                <h6>Bilgi Tabanı</h6>
+                <ul class="footer-links">
+                    <li><a href="harita.html">Özellikler</a></li>
+                </ul>
+            </div>
+            <div class="col-6 col-lg-3">
+                <h6>Hakkımızda</h6>
+                <ul class="footer-links">
+                    <li><a href="harita.html">Değerlerimiz</a></li>
+                </ul>
+            </div>
+            <div class="col-12 col-lg-3 responsive-phone">
+                <h6>Sosyal Medyada Bağlan</h6>
+                <ul class="social list-inline pt-0 pb-0 mb-0">
+                    <li class="list-inline-item"><a href="harita.html" class="facebook" title="Facebook"><i class="icon-facebook"></i></a></li>
+                    <li class="list-inline-item"><a href="harita.html" class="twitter" title="Twitter"><i class="icon-twitter"></i></a></li>
+                    <li class="list-inline-item"><a href="harita.html" class="instagram" title="Instagram"><i class="icon-instagram"></i></a></li>
+                </ul>
+                <div class="copyrights">
+                    <p>&#xA9; 2026 Gelin Çiçeği. Tüm hakları saklıdır.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="_assets/90b18b54e9b9f1b491b9423745702b08/JavaScript/chatf89d.js?1777104047"></script>
+<script src="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/JavaScript/appcc78.js?1771681566"></script>
+<script src="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/JavaScript/main94c6.js?1775588048"></script>
+<script src="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/JavaScript/typewriter4c0d.js?1775211192"></script>
+<script src="vendor/unpkg.com/maplibre-gl%405.2.0/dist/maplibre-gl.js"></script>
+<script src="_assets/20527c9d58754ce0a4ed8f67ae0a84c8/JavaScript/gelincicegi-map9970.js?1775843761"></script>
+
+
+</body>
+
+
+</html>

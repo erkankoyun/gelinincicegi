@@ -1,0 +1,1424 @@
+/* ===================================================
+   Google-style Solr Search Layout
+   - Before search: only standalone form visible
+   - After search: only two-column results layout visible
+=================================================== */
+
+/* Match standalone form frame width to results plugin frame width (which has this rule in app.css) */
+.frame.frame-default.frame-type-solr_pi_search.frame-layout-0 {
+    width: 100%;
+    display: block;
+    flex: 0 0 100%;
+}
+
+body:has(.tx-solr-search-form-plugin):has(.tx-solr-search-results-plugin.tx-solr-search--initial) .solr-search-layout {
+    display: none;
+}
+
+body:has(.tx-solr-search-form-plugin):has(.tx-solr-search-results-plugin.tx-solr-search--results) .solr-search-intro-layout {
+    display: none;
+}
+
+.tx-solr-search-form-plugin {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.tx-solr-search-form-plugin .tx-solr-search-form {
+    width: 100%;
+}
+
+.tx-solr-search-form-plugin .tx-solr-search-form__inner {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.tx-solr-search-form-plugin .tx-solr-search-inline {
+    width: 100%;
+}
+
+.solr-search-intro-layout .row {
+    justify-content: center;
+}
+
+.solr-search-intro-layout #tx-solr-search {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.solr-search-intro-layout .tx-solr-search-form {
+    width: 100%;
+}
+
+.solr-search-intro-layout .tx-solr-search-form__inner {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+}
+
+.solr-search-intro-layout .tx-solr-search-inline {
+    width: 100%;
+}
+
+/* Fallback when no standalone form plugin exists on the page. */
+.solr-search-layout:has(.tx-solr-search--initial) .solr-search-layout__main {
+    flex: 0 0 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.solr-search-layout:has(.tx-solr-search--initial) .solr-search-layout__main .tx-solr-search-form {
+    width: 100%;
+    max-width: 650px;
+}
+
+.solr-search-layout:has(.tx-solr-search--initial) .solr-search-layout__sidebar {
+    display: none;
+}
+
+.solr-search-layout:has(.tx-solr-search--initial) .tx-solr-search-form__inner {
+    margin: 0 auto;
+}
+
+.solr-search-layout:has(.tx-solr-search--initial) .tx-solr-search-inline {
+    justify-content: center;
+}
+
+.solr-search-layout:has(.tx-turqey-planner--has-result) .solr-search-layout__sidebar {
+    display: block;
+}
+
+@media (min-width: 768px) {
+    .solr-search-layout:has(.tx-turqey-planner--has-result) .solr-search-layout__main,
+    .solr-search-layout:has(.tx-turqey-planner--has-result) .solr-search-layout__sidebar {
+        flex: 0 0 50%;
+        max-width: 50%;
+        display: block;
+    }
+
+    .solr-search-layout__sidebar .frame-type-turqey_planner {
+        margin-top: 13.5rem;
+    }
+
+    .solr-search-layout__sidebar .search-planner-cta {
+        margin: 0 auto 0 0;
+    }
+}
+
+.search-planner-cta {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 1.4rem 1.25rem;
+    border: 1px solid #e1e8ee;
+    border-radius: 1.25rem;
+    background: #ffffff;
+    box-shadow: 0 14px 36px rgba(15, 26, 109, 0.08);
+    color: #5f6c84;
+}
+
+.search-planner-cta::after {
+    content: "";
+    position: absolute;
+    top: -56px;
+    right: -38px;
+    width: 136px;
+    height: 136px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(219, 9, 98, 0.16) 0%, rgba(219, 9, 98, 0.03) 66%, rgba(219, 9, 98, 0) 100%);
+}
+
+.search-planner-cta__eyebrow {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    background: rgba(219, 9, 98, 0.1);
+    color: #db0962;
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.search-planner-cta__title {
+    position: relative;
+    z-index: 1;
+    margin: 0.85rem 0 0.55rem;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    color: #0f1a6d;
+}
+
+.search-planner-cta__text {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0.95rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    color: #6f7c93;
+}
+
+.search-planner-cta__list {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 0.55rem;
+    margin-bottom: 1.1rem;
+    padding-left: 0;
+}
+
+.search-planner-cta__list li {
+    position: relative;
+    padding-left: 1.35rem;
+    font-size: 0.94rem;
+    line-height: 1.45;
+}
+
+.search-planner-cta__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.43rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: #db0962;
+    box-shadow: 0 0 0 4px rgba(219, 9, 98, 0.12);
+}
+
+.search-planner-cta__actions {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.1rem;
+}
+
+.search-planner-cta__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 0.8rem 1.05rem;
+    border-radius: 0.95rem;
+    background: #db0962;
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 16px 30px rgba(219, 9, 98, 0.2);
+}
+
+.search-planner-cta__button:hover,
+.search-planner-cta__button:focus {
+    color: #fff;
+    text-decoration: none;
+    background: #b70750;
+}
+
+.tx-turqey-planner {
+    text-align: left;
+}
+
+.planner-widget-form {
+    position: relative;
+    z-index: 1;
+}
+
+.planner-widget-form__grid {
+    display: grid;
+    gap: 0.8rem;
+}
+
+.planner-widget-form__field {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.planner-widget-form__field label {
+    margin: 0;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #0f1a6d;
+}
+
+.planner-widget-form__field select {
+    min-height: 44px;
+    padding: 0.65rem 0.85rem;
+    border: 1px solid #d9e1ee;
+    border-radius: 0.85rem;
+    background: #ffffff;
+    color: #4f5d75;
+}
+
+.planner-widget-form__field select:focus {
+    outline: none;
+    border-color: rgba(219, 9, 98, 0.42);
+    box-shadow: 0 0 0 0.2rem rgba(219, 9, 98, 0.1);
+}
+
+.planner-widget-form__submit {
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+}
+
+.planner-widget-result {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e1e8ee;
+}
+
+.planner-widget-result__title {
+    margin-bottom: 0.45rem;
+    font-size: 1.1rem;
+    color: #0f1a6d;
+}
+
+.planner-widget-result__summary,
+.planner-widget-result__focus {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #5f6c84;
+}
+
+.planner-widget-result__focus {
+    margin-bottom: 1rem;
+    padding: 0.8rem 0.9rem;
+    border-radius: 0.9rem;
+    background: #f7f9fc;
+}
+
+.planner-widget-result__section {
+    margin-top: 1rem;
+}
+
+.planner-widget-result__section strong {
+    display: block;
+    margin-bottom: 0.45rem;
+    font-size: 0.88rem;
+    color: #db0962;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.planner-widget-result__list {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.planner-widget-result__list li {
+    margin-bottom: 0.45rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.planner-widget-budget {
+    display: grid;
+    gap: 0.45rem;
+}
+
+.planner-widget-budget li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.8rem;
+    background: #f7f9fc;
+    font-size: 0.9rem;
+}
+
+.planner-widget-budget b {
+    color: #0f1a6d;
+}
+
+@media (max-width: 991px) {
+    .search-planner-cta {
+        max-width: none;
+    }
+
+    .solr-search-layout__sidebar .frame-type-turqey_planner {
+        margin-top: 1.5rem;
+    }
+}
+
+/* ===================================================
+   Seating Planner
+=================================================== */
+
+.seating-planner {
+    padding: 2rem;
+    border: 1px solid #e1e8ee;
+    border-radius: 1.5rem;
+    background: linear-gradient(180deg, #ffffff 0%, #fbfcff 100%);
+    box-shadow: 0 18px 48px rgba(15, 26, 109, 0.08);
+}
+
+.seating-planner__header {
+    margin-bottom: 1.5rem;
+}
+
+.seating-planner__eyebrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.32rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(219, 9, 98, 0.1);
+    color: #db0962;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.seating-planner__title {
+    margin: 0.9rem 0 0.5rem;
+    font-size: 2rem;
+    line-height: 1.1;
+    color: #0f1a6d;
+}
+
+.seating-planner__lead {
+    max-width: 56rem;
+    margin: 0;
+    color: #65748b;
+    font-size: 1rem;
+    line-height: 1.65;
+}
+
+.seating-planner__layout {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.seating-planner__controls {
+    display: grid;
+    gap: 1rem;
+}
+
+.seating-planner__panel,
+.seating-planner__workspace {
+    border: 1px solid #e6ebf3;
+    border-radius: 1.25rem;
+    background: #ffffff;
+    box-shadow: 0 10px 25px rgba(15, 26, 109, 0.04);
+}
+
+.seating-planner__panel {
+    padding: 1.1rem;
+}
+
+.seating-planner__panel-head,
+.seating-planner__pool-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.seating-planner__panel-title,
+.seating-planner__pool-head h3 {
+    margin: 0 0 0.85rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0f1a6d;
+}
+
+.seating-planner__pool-head h3 {
+    margin-bottom: 0;
+}
+
+.seating-planner__mini-action {
+    border: 0;
+    background: transparent;
+    color: #db0962;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.seating-planner__config-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.85rem;
+}
+
+.seating-planner__config-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-bottom: 0.9rem;
+}
+
+.seating-planner__config-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 92px 56px;
+    gap: 0.75rem;
+    align-items: end;
+}
+
+.seating-planner__field--grow {
+    min-width: 0;
+}
+
+.seating-planner__field--count input {
+    text-align: center;
+}
+
+.seating-planner__config-remove {
+    min-height: 46px;
+    border: 1px solid #f2c7db;
+    border-radius: 0.95rem;
+    background: #fff6fa;
+    color: #db0962;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.seating-planner__field-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.9rem;
+}
+
+.seating-planner__field-grid--compact {
+    margin-top: 0.35rem;
+}
+
+.seating-planner__rule-grid {
+    display: grid;
+    gap: 0.9rem;
+}
+
+.seating-planner__field {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.seating-planner__field label,
+.seating-planner__textarea-label {
+    margin: 0;
+    color: #0f1a6d;
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.seating-planner__field select,
+.seating-planner__field input,
+.seating-planner textarea {
+    width: 100%;
+    min-height: 46px;
+    padding: 0.75rem 0.9rem;
+    border: 1px solid #d7dfec;
+    border-radius: 0.95rem;
+    background: #ffffff;
+    color: #43526b;
+}
+
+.seating-planner textarea {
+    min-height: 220px;
+    resize: vertical;
+    line-height: 1.55;
+}
+
+.seating-planner__rule-grid textarea {
+    min-height: 120px;
+}
+
+.seating-planner__field select:focus,
+.seating-planner__field input:focus,
+.seating-planner textarea:focus {
+    outline: none;
+    border-color: rgba(219, 9, 98, 0.42);
+    box-shadow: 0 0 0 0.22rem rgba(219, 9, 98, 0.1);
+}
+
+.seating-planner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+
+.seating-planner__button {
+    min-height: 44px;
+    padding: 0.7rem 1rem;
+    border: 1px solid #d7dfec;
+    border-radius: 0.95rem;
+    background: #ffffff;
+    color: #0f1a6d;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.seating-planner__button--primary {
+    border-color: #db0962;
+    background: #db0962;
+    color: #ffffff;
+    box-shadow: 0 14px 28px rgba(219, 9, 98, 0.18);
+}
+
+.seating-planner__tips {
+    display: grid;
+    gap: 0.45rem;
+    margin: 1rem 0 0;
+    padding-left: 1rem;
+    color: #65748b;
+    font-size: 0.92rem;
+}
+
+.seating-planner__workspace {
+    padding: 1.1rem;
+}
+
+.seating-planner__summary {
+    margin-bottom: 1rem;
+    padding: 0.95rem 1rem;
+    border-radius: 1rem;
+    background: #f7f9fc;
+    color: #43526b;
+    font-size: 0.95rem;
+}
+
+.seating-planner__summary strong {
+    color: #0f1a6d;
+}
+
+.seating-planner__warnings {
+    display: none;
+    margin-bottom: 1rem;
+    padding: 0.95rem 1rem;
+    border: 1px solid rgba(219, 9, 98, 0.16);
+    border-radius: 1rem;
+    background: rgba(219, 9, 98, 0.05);
+}
+
+.seating-planner__warnings.is-visible {
+    display: block;
+}
+
+.seating-planner__warnings-title {
+    margin: 0 0 0.45rem;
+    color: #db0962;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.seating-planner__warnings-list {
+    display: grid;
+    gap: 0.35rem;
+    margin: 0;
+    padding-left: 1rem;
+    color: #6b5970;
+    font-size: 0.9rem;
+}
+
+.seating-planner__board {
+    display: grid;
+    grid-template-columns: minmax(220px, 260px) minmax(0, 1fr);
+    gap: 1rem;
+}
+
+.seating-planner__venue {
+    display: grid;
+    gap: 1rem;
+}
+
+.seating-planner__scene,
+.seating-planner__annex {
+    position: relative;
+    overflow: hidden;
+    border: 2px dashed #cfdaea;
+    border-radius: 1.4rem;
+    background: linear-gradient(180deg, #fbfdff 0%, #f4f7fb 100%);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7), 0 18px 40px rgba(15, 26, 109, 0.07);
+}
+
+.seating-planner__scene {
+    padding: 1rem;
+}
+
+.seating-planner__scene::before,
+.seating-planner__annex::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(117, 138, 170, 0.08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(117, 138, 170, 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+    pointer-events: none;
+}
+
+.seating-planner__scene-head,
+.seating-planner__annex-head {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.seating-planner__scene-head strong,
+.seating-planner__annex-head strong {
+    display: block;
+    color: #15295f;
+    font-size: 1rem;
+}
+
+.seating-planner__scene-head span,
+.seating-planner__annex-head span {
+    color: #70819c;
+    font-size: 0.86rem;
+}
+
+.seating-planner__scene-legend {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.45rem;
+}
+
+.seating-planner__legend-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.28rem 0.6rem;
+    border-radius: 999px;
+    background: rgba(84, 112, 152, 0.12);
+    color: #476389;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.seating-planner__legend-chip--stage {
+    background: rgba(219, 9, 98, 0.12);
+    color: #db0962;
+}
+
+.seating-planner__legend-chip--aisle {
+    background: rgba(15, 26, 109, 0.12);
+    color: #0f1a6d;
+}
+
+.seating-planner__hall {
+    position: relative;
+    min-height: 980px;
+    border-radius: 1.15rem;
+    background:
+        radial-gradient(circle at top center, rgba(255, 220, 230, 0.45), transparent 34%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(245, 248, 252, 0.94));
+}
+
+.seating-planner__feature {
+    position: absolute;
+    z-index: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #66768f;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.seating-planner__feature--stage {
+    left: 50%;
+    top: 1rem;
+    width: 220px;
+    height: 112px;
+    border: 3px solid rgba(45, 53, 72, 0.74);
+    border-bottom-left-radius: 130px 52px;
+    border-bottom-right-radius: 130px 52px;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    background: linear-gradient(180deg, rgba(230, 231, 238, 0.95), rgba(216, 216, 224, 0.95));
+    transform: translateX(-50%);
+}
+
+.seating-planner__feature-label {
+    max-width: 140px;
+    line-height: 1.25;
+}
+
+.seating-planner__feature--gift {
+    top: 208px;
+    left: 60%;
+    width: 88px;
+    height: 88px;
+    border: 2px solid rgba(45, 53, 72, 0.7);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.seating-planner__feature--music {
+    top: 138px;
+    right: 54px;
+    width: 150px;
+    height: 180px;
+    border: 3px solid rgba(45, 53, 72, 0.72);
+    border-radius: 90px 90px 22px 22px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(240, 243, 248, 0.96));
+}
+
+.seating-planner__feature--dance {
+    left: 54px;
+    right: 54px;
+    top: 126px;
+    height: 106px;
+    border-radius: 1.25rem;
+    border: 2px dashed rgba(173, 183, 201, 0.7);
+    background: rgba(255, 255, 255, 0.56);
+}
+
+.seating-planner__tables-area {
+    position: relative;
+    z-index: 1;
+}
+.seating-planner__objects-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.seating-planner__objects-layer > * {
+    pointer-events: auto;
+}
+
+.seating-planner__tables-area--main {
+    min-height: 980px;
+}
+
+.seating-planner__annex {
+    padding: 0.95rem 1rem 1rem;
+}
+
+.seating-planner__tables-area--annex {
+    min-height: 460px;
+}
+
+.seating-planner__scene-empty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px;
+    padding: 1rem 1.2rem;
+    border: 1px dashed #d1dbe9;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.72);
+    color: #8a98ad;
+    font-weight: 600;
+}
+
+.seating-planner__pool-panel {
+    padding: 1rem;
+    border: 1px dashed #d7dfec;
+    border-radius: 1rem;
+    background: #fcfdff;
+}
+
+.seating-planner__pool-head span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2rem;
+    min-height: 2rem;
+    padding: 0.1rem 0.45rem;
+    border-radius: 999px;
+    background: rgba(219, 9, 98, 0.1);
+    color: #db0962;
+    font-weight: 700;
+}
+
+.seating-planner__pool {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    align-content: flex-start;
+    min-height: 180px;
+}
+
+.seating-planner__table {
+    padding: 1rem;
+    border: 1px solid #e1e8ee;
+    border-radius: 1.15rem;
+    background: #ffffff;
+    box-shadow: 0 12px 24px rgba(15, 26, 109, 0.05);
+}
+
+.seating-planner__table--floating {
+    position: absolute;
+    z-index: 3;
+    padding: 0.65rem;
+    border-color: rgba(197, 208, 223, 0.95);
+    box-shadow: 0 18px 36px rgba(15, 26, 109, 0.12);
+    cursor: default;
+}
+
+.seating-planner__table--plan {
+    overflow: hidden;
+    border-radius: 1.35rem;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(6px);
+}
+
+.seating-planner__table--floating.is-dragging {
+    z-index: 6;
+    box-shadow: 0 26px 44px rgba(15, 26, 109, 0.18);
+}
+
+.seating-planner__table-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.seating-planner__table-actions {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    align-items: flex-end;
+}
+
+.seating-planner__table-kicker {
+    display: inline-flex;
+    margin-bottom: 0.28rem;
+    color: #8a97ab;
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+.seating-planner__table-title {
+    margin: 0;
+    color: #0f1a6d;
+    font-size: 0.94rem;
+    font-weight: 700;
+}
+
+.seating-planner__table-meta {
+    display: inline-flex;
+    margin-bottom: 0.35rem;
+    color: #65748b;
+    font-size: 0.74rem;
+}
+
+.seating-planner__table-handle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.34rem 0.6rem;
+    border: 1px solid #d5dceb;
+    border-radius: 999px;
+    background: #fff;
+    color: #4f6587;
+    font-size: 0.68rem;
+    font-weight: 700;
+    cursor: grab;
+}
+
+.seating-planner__table-handle:active {
+    cursor: grabbing;
+}
+
+.seating-planner__table-collapse {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.32rem 0.58rem;
+    border: 1px solid #d5dceb;
+    border-radius: 999px;
+    background: #fff;
+    color: #7a86a0;
+    font-size: 0.66rem;
+    font-weight: 700;
+}
+
+.seating-planner__table--mini {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.1rem;
+    width: 92px;
+    min-height: 92px;
+    padding: 0.65rem;
+    border-radius: 999px;
+    background: linear-gradient(180deg, rgba(233, 235, 241, 0.98), rgba(215, 218, 227, 0.98));
+    border: 2px solid rgba(109, 118, 135, 0.42);
+    box-shadow: 0 14px 28px rgba(15, 26, 109, 0.12);
+    color: #556273;
+    text-align: center;
+    cursor: grab;
+}
+
+.seating-planner__table--mini.is-dragging {
+    cursor: grabbing;
+}
+
+.seating-planner__table-mini-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.seating-planner__table-mini-number {
+    font-size: 1.5rem;
+    line-height: 1;
+    color: #26324e;
+}
+
+.seating-planner__table-top {
+    position: absolute;
+    left: 50%;
+    top: 52%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 84px;
+    height: 84px;
+    border: 2px solid rgba(98, 107, 126, 0.45);
+    border-radius: 50%;
+    background: linear-gradient(180deg, rgba(236, 237, 242, 0.98), rgba(222, 223, 230, 0.98));
+    color: #6c7384;
+    font-size: 1.4rem;
+    font-weight: 400;
+    transform: translate(-50%, -50%);
+}
+
+.seating-planner__table-top--row {
+    width: 114px;
+    height: 52px;
+    border-radius: 1rem;
+    font-size: 1.1rem;
+}
+
+.seating-planner__seat-list {
+    position: relative;
+    min-height: 100%;
+}
+
+.seating-planner__seat-list--round {
+    position: absolute;
+    left: 0.5rem;
+    right: 0.5rem;
+    top: 4rem;
+    bottom: 0.35rem;
+    min-height: 0;
+}
+
+.seating-planner__seat-list--row {
+    position: absolute;
+    left: 0.5rem;
+    right: 0.5rem;
+    top: 4.2rem;
+    bottom: 0.5rem;
+    min-height: 0;
+}
+
+.seating-planner__seat {
+    position: absolute;
+    display: grid;
+    gap: 0.2rem;
+    width: 68px;
+    min-height: 56px;
+    padding: 0.35rem;
+    border: 1px dashed #ccd7e6;
+    border-radius: 0.95rem;
+    background: rgba(250, 252, 255, 0.92);
+    transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+.seating-planner__seat--stage {
+    border-color: rgba(219, 9, 98, 0.35);
+    background: rgba(255, 242, 248, 0.94);
+}
+
+.seating-planner__seat--aisle {
+    border-color: rgba(15, 26, 109, 0.22);
+    background: rgba(244, 247, 255, 0.94);
+}
+
+.seating-planner__seat.is-drop-target {
+    border-color: #db0962;
+    background: rgba(219, 9, 98, 0.06);
+    box-shadow: 0 0 0 3px rgba(219, 9, 98, 0.14);
+}
+
+.seating-planner__seat-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.3rem;
+    color: #65748b;
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.seating-planner__zone {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.12rem 0.28rem;
+    border-radius: 999px;
+    background: #eef3fb;
+    color: #547098;
+    font-size: 0.56rem;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.seating-planner__zone--stage {
+    background: rgba(219, 9, 98, 0.1);
+    color: #db0962;
+}
+
+.seating-planner__zone--aisle {
+    background: rgba(15, 26, 109, 0.08);
+    color: #0f1a6d;
+}
+
+.seating-planner__placeholder {
+    align-self: center;
+    color: #92a0b6;
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.seating-planner__object-help {
+    margin: 0.85rem 0 0;
+    color: #7a87a0;
+    font-size: 0.82rem;
+    line-height: 1.45;
+}
+
+.seating-planner__guest {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    width: 100%;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid #dfe6f2;
+    border-radius: 0.9rem;
+    background: #ffffff;
+    color: #0f1a6d;
+    cursor: grab;
+    box-shadow: 0 8px 18px rgba(15, 26, 109, 0.06);
+}
+
+.seating-planner__guest:active {
+    cursor: grabbing;
+}
+.seating-planner__plan-object {
+    position: absolute;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem 0.9rem;
+    border: 2px dashed #9eb1cb;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: #3f5778;
+    box-shadow: 0 14px 30px rgba(15, 26, 109, 0.08);
+}
+
+.seating-planner__plan-object.is-dragging {
+    z-index: 5;
+    box-shadow: 0 20px 36px rgba(15, 26, 109, 0.14);
+}
+
+.seating-planner__plan-object--sahne {
+    border-style: solid;
+    border-color: rgba(45, 53, 72, 0.74);
+    border-width: 3px;
+    border-bottom-left-radius: 130px 52px;
+    border-bottom-right-radius: 130px 52px;
+    border-top-left-radius: 1.5rem;
+    border-top-right-radius: 1.5rem;
+    background: linear-gradient(180deg, rgba(230, 231, 238, 0.95), rgba(216, 216, 224, 0.95));
+}
+
+.seating-planner__plan-object--dans {
+    border-style: dashed;
+    border-color: rgba(173, 183, 201, 0.9);
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.56);
+}
+
+.seating-planner__plan-object--muzik {
+    border-style: solid;
+    border-color: rgba(45, 53, 72, 0.72);
+    border-width: 3px;
+    border-radius: 90px 90px 22px 22px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(240, 243, 248, 0.96));
+}
+
+.seating-planner__plan-object--hediye {
+    border-style: solid;
+    border-color: rgba(45, 53, 72, 0.7);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+.seating-planner__plan-object--orkestra {
+    border-style: solid;
+    border-radius: 999px;
+}
+
+.seating-planner__plan-object--bar,
+.seating-planner__plan-object--giris {
+    border-style: solid;
+}
+
+.seating-planner__plan-object-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.82rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.seating-planner__plan-object-handle,
+.seating-planner__plan-object-remove {
+    position: absolute;
+    top: 0.35rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.7rem;
+    height: 1.7rem;
+    padding: 0 0.35rem;
+    border: 1px solid #d4dded;
+    border-radius: 999px;
+    background: #fff;
+    color: #6d7f9b;
+    font-size: 0.62rem;
+    font-weight: 700;
+}
+
+.seating-planner__plan-object-handle {
+    left: 0.35rem;
+    cursor: grab;
+}
+
+.seating-planner__plan-object-remove {
+    right: 0.35rem;
+}
+
+.seating-planner__guest-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    flex: 0 0 auto;
+    border-radius: 999px;
+    background: linear-gradient(180deg, #60656f, #2f3440);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.seating-planner__guest-body {
+    display: grid;
+    gap: 0.1rem;
+    min-width: 0;
+}
+
+.seating-planner__guest-name {
+    font-weight: 700;
+    font-size: 0.88rem;
+}
+
+.seating-planner__guest-meta {
+    color: #6c7a92;
+    font-size: 0.74rem;
+}
+
+.seating-planner__guest--seat {
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.22rem;
+    padding: 0.25rem;
+    min-height: 0;
+    border-radius: 0.78rem;
+    box-shadow: none;
+}
+
+.seating-planner__guest--seat .seating-planner__guest-avatar {
+    width: 1.6rem;
+    height: 1.6rem;
+    font-size: 0.6rem;
+}
+
+.seating-planner__guest--seat .seating-planner__guest-name {
+    font-size: 0.66rem;
+    line-height: 1.15;
+    text-align: center;
+}
+
+.seating-planner__seat-list--round .seating-planner__seat:nth-child(1) {
+    z-index: 2;
+}
+
+.seating-planner__guest-meta .is-conflict {
+    color: #db0962;
+    font-weight: 700;
+}
+
+.seating-planner__empty {
+    color: #92a0b6;
+    font-size: 0.92rem;
+}
+
+@media (max-width: 991px) {
+    .seating-planner {
+        padding: 1.2rem;
+    }
+
+    .seating-planner__layout,
+    .seating-planner__board {
+        grid-template-columns: 1fr;
+    }
+
+    .seating-planner__scene-head,
+    .seating-planner__annex-head {
+        flex-direction: column;
+    }
+
+    .seating-planner__scene-legend {
+        justify-content: flex-start;
+    }
+
+    .seating-planner__hall {
+        min-height: 980px;
+    }
+
+    .seating-planner__tables-area--main {
+        min-height: 980px;
+    }
+
+    .seating-planner__tables-area--annex {
+        min-height: 520px;
+    }
+
+    .seating-planner__table--plan {
+        transform: scale(0.95);
+        transform-origin: top left;
+    }
+
+    .seating-planner__feature--music {
+        right: 18px;
+        top: 188px;
+        width: 140px;
+        height: 174px;
+    }
+
+    .seating-planner__feature--gift {
+        left: auto;
+        right: 170px;
+        top: 262px;
+    }
+
+    .seating-planner__feature--dance {
+        top: 154px;
+        left: 18px;
+        right: 18px;
+    }
+
+    .seating-planner__field-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .seating-planner__config-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===================================================
+   Footer — Mobile Layout
+=================================================== */
+
+footer {
+    border-top: none;
+}
+
+@media (min-width: 992px) {
+    footer .row {
+        text-align: center;
+    }
+
+    footer .social {
+        justify-content: center;
+        display: flex;
+    }
+}
+
+@media (max-width: 991px) {
+    footer .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+
+    footer .row {
+        text-align: center;
+    }
+
+    footer .row > [class*="col-"] {
+        padding-top: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+
+    /* Horizontal divider after first row (cols 1+2) */
+    footer .row > [class*="col-"]:nth-child(-n+2) {
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+    /* Vertical divider between left and right column */
+    footer .row > [class*="col-"]:nth-child(odd):not(:last-child) {
+        border-right: 1px solid #f0f0f0;
+    }
+
+    /* Social / copyright row: full width, no side border */
+    footer .row > [class*="col-"]:last-child {
+        border-right: none;
+        border-bottom: none;
+        padding-top: 1.5rem;
+    }
+
+    footer h6 {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    footer .social {
+        justify-content: center;
+        display: flex;
+    }
+
+    footer .copyrights {
+        margin-top: 0.75rem;
+    }
+}

@@ -1,0 +1,122 @@
+/* GelinCicegi Map – scoped styles */
+.gelincicegi-map-app{--accent:#db0962;--accent-2:#0F1A6D;--text:#171c2d;--muted:#6b7280;--line:#ebedf4}
+.gelincicegi-map-app *{box-sizing:border-box}
+.gelincicegi-map-app{position:relative;width:100%;height:100vh;overflow:hidden;font-family:Inter,system-ui,sans-serif}
+
+@keyframes gelincicegi-fadeSlideIn{from{opacity:0;transform:translateX(22px)}to{opacity:1;transform:translateX(0)}}
+@keyframes gelincicegi-pulseDot{0%,100%{box-shadow:0 0 0 0 rgba(219,9,98,.5)}60%{box-shadow:0 0 0 10px rgba(219,9,98,0)}}
+@keyframes gelincicegi-dotGlow{0%,100%{opacity:1}50%{opacity:.55}}
+
+.gelincicegi-map-app #gelincicegi-map{position:absolute;inset:0}
+.gelincicegi-map-app .maplibregl-ctrl-top-left,.gelincicegi-map-app .maplibregl-ctrl-top-right{top:14px}
+.gelincicegi-map-app .maplibregl-ctrl-group{border-radius:22px!important;overflow:hidden;box-shadow:0 12px 24px rgba(15,26,109,.14)!important}
+
+.gelincicegi-map-app .places-panel{position:absolute;top:0;right:0;width:440px;height:100%;background:rgba(252,253,255,.98);backdrop-filter:blur(20px) saturate(180%);border-left:1px solid rgba(15,26,109,.07);z-index:20;display:flex;flex-direction:column;box-shadow:-4px 0 48px rgba(15,26,109,.1)}
+
+.gelincicegi-map-app .panel-header{padding:22px 22px 18px;background:#fff;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+.gelincicegi-map-app .panel-header::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent-2) 0%,var(--accent) 100%)}
+.gelincicegi-map-app .panel-brand{font-size:10px;font-weight:800;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;display:block}
+.gelincicegi-map-app .panel-count{font-size:24px;font-weight:800;color:var(--accent-2);letter-spacing:-.4px;line-height:1.15;margin-bottom:4px}
+.gelincicegi-map-app .panel-subtitle{font-size:13px;color:var(--muted);font-weight:400}
+
+.gelincicegi-map-app .places-list{overflow-y:auto;padding-bottom:24px;flex:1}
+.gelincicegi-map-app .places-list::-webkit-scrollbar{width:3px}
+.gelincicegi-map-app .places-list::-webkit-scrollbar-track{background:transparent}
+.gelincicegi-map-app .places-list::-webkit-scrollbar-thumb{background:rgba(15,26,109,.13);border-radius:3px}
+
+.gelincicegi-map-app .place-item{display:grid;grid-template-columns:82px 1fr;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line);cursor:pointer;background:#fff;position:relative;transition:background .22s}
+.gelincicegi-map-app .place-item::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:3px;border-radius:0 3px 3px 0;background:linear-gradient(180deg,var(--accent),#f0107a);transform:scaleY(0);transition:transform .26s cubic-bezier(.4,0,.2,1)}
+.gelincicegi-map-app .place-item.slide-in{animation:gelincicegi-fadeSlideIn .38s cubic-bezier(.4,0,.2,1) both}
+.gelincicegi-map-app .place-item:hover{background:#f5f7fc}
+.gelincicegi-map-app .place-item:hover .place-thumb{transform:scale(1.05)}
+.gelincicegi-map-app .place-item.active{background:linear-gradient(135deg,#eef1fc 0%,#fdeef6 100%)}
+.gelincicegi-map-app .place-item.active::before{transform:scaleY(1)}
+
+.gelincicegi-map-app .place-thumb{width:82px;height:82px;border-radius:18px;background:#efefef center/cover no-repeat;overflow:hidden;transition:transform .3s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 14px rgba(15,26,109,.1)}
+.gelincicegi-map-app .place-name{font-size:17px;font-weight:700;color:var(--accent-2);margin-bottom:3px;line-height:1.2}
+.gelincicegi-map-app .place-rating{font-size:13px;font-weight:600;color:var(--muted);margin-bottom:5px}
+.gelincicegi-map-app .place-status{font-size:13px;color:#0d9d3d;font-weight:500}
+.gelincicegi-map-app .place-status.closed{color:#dd4f57}
+
+.gelincicegi-map-app .custom-marker{position:relative;width:20px;height:20px;cursor:pointer}
+.gelincicegi-map-app .rating-badge{position:absolute;left:50%;bottom:100%;transform:translateX(-50%);margin-bottom:2px;background:linear-gradient(135deg,var(--accent-2) 0%,#1e35b0 100%);color:#fff;border-radius:999px;padding:5px 11px;font-size:13px;font-weight:700;box-shadow:0 6px 22px rgba(15,26,109,.32);white-space:nowrap;transition:box-shadow .22s}
+.gelincicegi-map-app .custom-marker:hover .rating-badge{box-shadow:0 10px 30px rgba(15,26,109,.42)}
+.gelincicegi-map-app .pin-dot{width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid #fff;box-shadow:0 4px 14px rgba(15,26,109,.2)}
+.gelincicegi-map-app .pin-dot::after{content:'';position:absolute;inset:2px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent-2))}
+.gelincicegi-map-app .custom-marker.active-marker .pin-dot{animation:gelincicegi-pulseDot 1.8s ease-in-out infinite}
+.gelincicegi-map-app .marker-popup{position:absolute;bottom:100%;left:50%;transform:translateX(-50%);margin-bottom:34px;z-index:50;display:none;filter:drop-shadow(0 16px 48px rgba(15,26,109,.22))}
+.gelincicegi-map-app .marker-popup.open{display:block}
+.gelincicegi-map-app .marker-popup .popup-card{background:#fff;border-radius:22px;padding:16px 18px 16px;min-width:360px;position:relative}
+.gelincicegi-map-app .marker-popup .popup-card::after{content:'';position:absolute;left:50%;top:100%;transform:translateX(-50%);border-left:10px solid transparent;border-right:10px solid transparent;border-top:10px solid #fff}
+
+.gelincicegi-map-app .detail-overlay{position:absolute;top:0;right:0;width:440px;height:100%;overflow-y:auto;overflow-x:hidden;background:#fff;z-index:30;box-shadow:-16px 0 64px rgba(15,26,109,.16);border-left:1px solid rgba(15,26,109,.07);transform:translateX(0);transition:transform .32s cubic-bezier(.4,0,.2,1)}
+.gelincicegi-map-app .detail-overlay.hidden{display:block!important;transform:translateX(100%);pointer-events:none}
+.gelincicegi-map-app .detail-overlay::-webkit-scrollbar{width:3px}
+.gelincicegi-map-app .detail-overlay::-webkit-scrollbar-track{background:transparent}
+.gelincicegi-map-app .detail-overlay::-webkit-scrollbar-thumb{background:rgba(219,9,98,.2);border-radius:3px}
+
+.gelincicegi-map-app .back-btn{position:sticky;top:0;left:0;z-index:40;display:flex;align-items:center;gap:10px;width:100%;padding:15px 20px;border:none;border-bottom:1px solid var(--line);background:rgba(255,255,255,.95);backdrop-filter:blur(14px);color:var(--accent-2);font-size:15px;font-weight:600;cursor:pointer;text-align:left;transition:color .18s,background .18s}
+.gelincicegi-map-app .back-btn::before{content:'\2039';font-size:26px;line-height:1;transition:transform .22s cubic-bezier(.4,0,.2,1)}
+.gelincicegi-map-app .back-btn:hover{color:var(--accent);background:#fff}
+.gelincicegi-map-app .back-btn:hover::before{transform:translateX(-5px)}
+
+.gelincicegi-map-app .detail-image{height:360px;background:center/cover no-repeat;position:relative;overflow:hidden;transition:opacity .22s ease}
+.gelincicegi-map-app .detail-image::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 42%,rgba(15,26,109,.08) 68%,rgba(15,26,109,.36) 100%);pointer-events:none}
+
+.gelincicegi-map-app .slider-arrow{position:absolute;top:0;bottom:0;margin:auto;height:44px;width:38px;z-index:10;border:none;border-radius:8px;background:rgba(0,0,0,.52);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;transition:background .2s,transform .16s}
+.gelincicegi-map-app .slider-arrow:hover{background:rgba(0,0,0,.75);transform:scale(1.06)}
+.gelincicegi-map-app .slider-arrow:active{transform:scale(.93)}
+.gelincicegi-map-app .slider-prev{left:14px}
+.gelincicegi-map-app .slider-next{right:14px}
+
+.gelincicegi-map-app .dots{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:6px;z-index:11;align-items:center}
+.gelincicegi-map-app .dots span{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.45);cursor:pointer;transition:background .22s,width .28s cubic-bezier(.4,0,.2,1),border-radius .28s}
+.gelincicegi-map-app .dots span.active{background:var(--accent);width:24px;border-radius:4px;animation:gelincicegi-dotGlow 2.4s ease-in-out infinite}
+
+.gelincicegi-map-app .detail-body{padding:20px 22px 36px}
+.gelincicegi-map-app .detail-body h2{margin:0 0 5px;font-size:22px;font-weight:800;color:var(--accent-2);letter-spacing:-.4px}
+.gelincicegi-map-app .detail-meta{font-size:15px;font-weight:500;color:var(--muted);margin-bottom:20px}
+.gelincicegi-map-app .chip-row{display:flex;gap:10px;margin-bottom:22px}
+.gelincicegi-map-app .mini-chip{flex:1;border:1.5px solid #dde0ea;background:#fff;border-radius:999px;padding:11px 12px;font:inherit;font-size:14px;font-weight:600;cursor:pointer;color:var(--accent-2);transition:background .18s,border-color .18s,color .18s,transform .13s,box-shadow .18s;text-align:center}
+.gelincicegi-map-app .mini-chip:hover:not(:disabled){border-color:var(--accent-2);box-shadow:0 2px 10px rgba(15,26,109,.1)}
+.gelincicegi-map-app .mini-chip:active:not(:disabled){transform:scale(.95)}
+.gelincicegi-map-app .mini-chip.active{background:linear-gradient(135deg,var(--accent) 0%,#f0107a 100%);color:#fff;border-color:transparent;box-shadow:0 4px 18px rgba(219,9,98,.38)}
+.gelincicegi-map-app .mini-chip:disabled{opacity:.35;cursor:default}
+
+.gelincicegi-map-app .status-row,.gelincicegi-map-app .info-row{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-top:1px solid var(--line);color:var(--text);font-size:15px;line-height:1.5}
+.gelincicegi-map-app .status-row{color:#0d9d3d}
+.gelincicegi-map-app .hours-wrap{margin:0 0 14px;font-size:12px}
+.gelincicegi-map-app .hours-row{display:flex;gap:10px;padding:2px 0;color:var(--muted)}
+.gelincicegi-map-app .hours-row.today{color:var(--text);font-weight:700}
+.gelincicegi-map-app .hours-day{width:26px;flex-shrink:0}
+.gelincicegi-map-app .icon{display:inline-flex;min-width:22px;justify-content:center;color:var(--accent-2);font-size:17px;padding-top:1px}
+.gelincicegi-map-app .detail-copy{font-size:15px;line-height:1.85;color:var(--muted);margin:14px 0}
+.gelincicegi-map-app .detail-body h3{font-size:11px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--accent-2);margin:20px 0 6px;opacity:.6}
+
+.gelincicegi-map-app .hidden{display:none!important}
+
+.gelincicegi-map-app .popup-close-btn{position:absolute;top:10px;right:10px;z-index:20;width:28px;height:28px;border:none;border-radius:50%;background:#eef0f8;color:var(--accent-2);font-size:13px;cursor:pointer;line-height:28px;padding:0;text-align:center;transition:background .18s,color .18s}
+.gelincicegi-map-app .popup-close-btn:hover{background:var(--accent);color:#fff}
+.gelincicegi-map-app .popup-chips{display:flex;gap:6px;margin-top:14px;flex-wrap:nowrap}
+.gelincicegi-map-app .popup-chips .mini-chip{flex:1;min-width:0;font-size:13px;padding:9px 6px;white-space:nowrap;text-align:center}
+.gelincicegi-map-app .popup-chips .popup-chip-wide{flex:2}
+.gelincicegi-map-app .popup-row{display:grid;grid-template-columns:76px 1fr;gap:12px;align-items:start}
+.gelincicegi-map-app .popup-thumb{width:76px;height:76px;border-radius:16px;background:center/cover no-repeat;box-shadow:0 4px 14px rgba(15,26,109,.12)}
+.gelincicegi-map-app .popup-name{font-size:16px;font-weight:700;color:var(--accent-2);margin-bottom:3px}
+.gelincicegi-map-app .popup-rating{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:4px}
+.gelincicegi-map-app .popup-status{font-size:13px;color:#0d9d3d;font-weight:500}
+.gelincicegi-map-app .popup-status.closed{color:#dd4f57}
+
+.gelincicegi-map-app .route-info-bar{position:absolute;bottom:36px;left:16px;z-index:25;display:flex;align-items:center;gap:10px;background:rgba(15,26,109,.88);backdrop-filter:blur(10px);color:#fff;padding:10px 14px 10px 12px;border-radius:12px;font-size:14px;font-weight:600;box-shadow:0 6px 24px rgba(15,26,109,.32);transition:opacity .26s,transform .26s}
+.gelincicegi-map-app .route-info-bar.hidden-bar{opacity:0;pointer-events:none;transform:translateY(8px)}
+.gelincicegi-map-app .route-info-bar svg{flex-shrink:0;opacity:.85}
+.gelincicegi-map-app .route-sep{opacity:.5;font-weight:400}
+.gelincicegi-map-app .route-clear-btn{background:rgba(255,255,255,.18);border:none;color:#fff;border-radius:6px;width:24px;height:24px;cursor:pointer;font-size:13px;display:flex;align-items:center;justify-content:center;padding:0;margin-left:4px;transition:background .18s}
+.gelincicegi-map-app .route-clear-btn:hover{background:rgba(255,255,255,.35)}
+
+@media (max-width:900px){
+  .gelincicegi-map-app .places-panel{width:100%;height:255px;top:auto;bottom:0;border-left:none;border-top:1px solid rgba(0,0,0,.06)}
+  .gelincicegi-map-app .places-list{display:flex;overflow:auto}
+  .gelincicegi-map-app .place-item{min-width:340px;border-bottom:none;border-right:1px solid var(--line)}
+  .gelincicegi-map-app .detail-overlay{width:100%;bottom:0;top:0;height:100%}
+}

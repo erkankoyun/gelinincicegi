@@ -1,0 +1,608 @@
+/* ============================================================
+   Gelin Çiçeği – Funnel Chat · Luxury UX
+   ============================================================ */
+
+.gd-funnel {
+    --gd-accent:  #db0962;
+    --gd-primary: #0f1a6d;
+    --gd-text:    #121a46;
+    --gd-muted:   #646b8a;
+    --gd-card:    rgba(255, 255, 255, 0.97);
+    --gd-shadow:  0 26px 70px rgba(15, 26, 109, 0.11);
+    --gd-radius:  28px;
+
+    max-width: 680px;
+    margin: 1.5rem auto;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--gd-text);
+}
+
+/* ---- Progress bar ---------------------------------------- */
+.gd-funnel__progress-wrap {
+    position: relative;
+    height: 6px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(219,9,98,.09), rgba(15,26,109,.07));
+    margin-bottom: 14px;
+    overflow: hidden;
+}
+
+.gd-funnel__progress-fill {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 4%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--gd-accent), var(--gd-primary));
+    transition: width 0.65s cubic-bezier(0.2, 0.8, 0.2, 1);
+    box-shadow: 0 3px 10px rgba(15,26,109,.18);
+}
+
+/* ---- Stage card ------------------------------------------ */
+.gd-funnel__stage {
+    position: relative;
+    overflow: hidden;
+    background: var(--gd-card);
+    border: 1px solid rgba(15,26,109,.08);
+    border-radius: var(--gd-radius);
+    box-shadow: var(--gd-shadow);
+}
+
+/* ---- Inner: blurs during transition ---------------------- */
+.gd-funnel__inner {
+    padding: 32px 32px 28px;
+    transition:
+        transform 0.7s cubic-bezier(0.2, 0.75, 0.2, 1),
+        opacity   0.7s ease,
+        filter    0.7s ease;
+    transform-origin: center;
+}
+
+.gd-animating .gd-funnel__inner {
+    transform: scale(0.975) translateY(8px);
+    opacity: 0.13;
+    filter: blur(7px);
+}
+
+/* ---- Floral particles ------------------------------------ */
+.gd-funnel__floral {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 10;
+}
+.gd-animating .gd-funnel__floral { opacity: 1; }
+
+.gd-petal, .gd-spark {
+    position: absolute;
+    left: 50%; top: 42%;
+    transform: translate(-50%,-50%) scale(.3);
+    opacity: 0;
+}
+.gd-petal {
+    width: 110px; height: 110px;
+    border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+    background: radial-gradient(circle at 30% 30%,
+        rgba(255,255,255,.82), rgba(219,9,98,.13) 40%, rgba(15,26,109,.10) 100%);
+    mix-blend-mode: multiply;
+    filter: blur(1px);
+}
+.gd-spark {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(219,9,98,.72), rgba(15,26,109,.56));
+}
+
+.gd-animating .gd-petal-1 { animation: gd-bloom1 .86s ease forwards; }
+.gd-animating .gd-petal-2 { animation: gd-bloom2 .86s ease forwards; }
+.gd-animating .gd-petal-3 { animation: gd-bloom3 .86s ease forwards; }
+.gd-animating .gd-spark-1 { animation: gd-spark1 .86s ease forwards; }
+.gd-animating .gd-spark-2 { animation: gd-spark2 .86s ease forwards; }
+
+@keyframes gd-bloom1 {
+    0%   { opacity:0;   transform:translate(-50%,-50%) scale(.22) rotate(0deg);   }
+    35%  { opacity:.50; transform:translate(-90%,-62%) scale(.82) rotate(22deg);  }
+    100% { opacity:0;   transform:translate(-120%,-84%) scale(1.1) rotate(40deg); }
+}
+@keyframes gd-bloom2 {
+    0%   { opacity:0;   transform:translate(-50%,-50%) scale(.22) rotate(0deg);    }
+    35%  { opacity:.48; transform:translate(-3%,-80%)  scale(.78) rotate(-12deg);  }
+    100% { opacity:0;   transform:translate(14%,-112%) scale(1.05) rotate(-28deg); }
+}
+@keyframes gd-bloom3 {
+    0%   { opacity:0;   transform:translate(-50%,-50%) scale(.22) rotate(0deg);   }
+    35%  { opacity:.44; transform:translate(-86%,6%)   scale(.78) rotate(16deg);  }
+    100% { opacity:0;   transform:translate(-116%,28%) scale(1.04) rotate(34deg); }
+}
+@keyframes gd-spark1 {
+    0%   { opacity:0;  transform:translate(-50%,-50%) scale(.2); }
+    42%  { opacity:.7; transform:translate(-16%,-130%) scale(1); }
+    100% { opacity:0;  transform:translate(-2%,-165%)  scale(.2); }
+}
+@keyframes gd-spark2 {
+    0%   { opacity:0;    transform:translate(-50%,-50%) scale(.2); }
+    42%  { opacity:.64;  transform:translate(-145%,-14%) scale(1); }
+    100% { opacity:0;    transform:translate(-184%,4%)   scale(.2); }
+}
+
+/* ---- Intro phase ----------------------------------------- */
+.gd-funnel__badge {
+    display: inline-flex;
+    padding: 7px 13px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    background: rgba(219,9,98,.07);
+    color: var(--gd-accent);
+    margin-bottom: 16px;
+}
+
+.gd-funnel__headline {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(32px, 5vw, 52px);
+    font-weight: 600;
+    line-height: 1.06;
+    letter-spacing: -.02em;
+    margin: 0 0 12px;
+    color: var(--gd-text);
+}
+.gd-funnel__headline span { color: var(--gd-primary); }
+
+.gd-funnel__subline {
+    color: var(--gd-muted);
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0 0 20px;
+    max-width: 520px;
+}
+
+.gd-funnel__pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 26px;
+}
+.gd-funnel__pills span {
+    border: 1px solid rgba(15,26,109,.10);
+    background: linear-gradient(180deg, rgba(255,255,255,.97), rgba(249,250,255,.97));
+    padding: 8px 14px;
+    border-radius: 999px;
+    color: var(--gd-text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ---- Question phase -------------------------------------- */
+.gd-funnel__step-kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--gd-accent);
+    margin-bottom: 12px;
+}
+.gd-funnel__step-kicker--done { color: #2e7d32; }
+
+.gd-funnel__ack {
+    font-size: 14px;
+    color: var(--gd-muted);
+    font-style: italic;
+    min-height: 20px;
+    margin-bottom: 8px;
+}
+
+.gd-funnel__question {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(24px, 3.8vw, 36px);
+    font-weight: 600;
+    line-height: 1.22;
+    color: var(--gd-text);
+    margin-bottom: 22px;
+}
+.gd-funnel__question--sm {
+    font-size: clamp(20px, 3vw, 28px);
+    margin-bottom: 14px;
+}
+
+/* ---- Forms ----------------------------------------------- */
+.gd-funnel__form,
+.gd-funnel__email-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.gd-funnel__input {
+    width: 100%;
+    min-height: 54px;
+    max-height: 140px;
+    resize: vertical;
+    border: 1px solid rgba(15,26,109,.14);
+    border-radius: 14px;
+    background: rgba(248,250,255,.8);
+    color: var(--gd-text);
+    padding: 13px 16px;
+    font: inherit;
+    font-size: 15px;
+    line-height: 1.5;
+    transition: border-color .2s, box-shadow .2s;
+    box-sizing: border-box;
+}
+.gd-funnel__email-input,
+.gd-funnel__phone-input {
+    width: 100%;
+    height: 54px;
+    border: 1px solid rgba(15,26,109,.14);
+    border-radius: 14px;
+    background: rgba(248,250,255,.8);
+    color: var(--gd-text);
+    padding: 13px 16px;
+    font: inherit;
+    font-size: 15px;
+    transition: border-color .2s, box-shadow .2s;
+    box-sizing: border-box;
+}
+.gd-funnel__phone-input {
+    margin-top: 10px;
+}
+.gd-funnel__contact-hint {
+    color: var(--gd-muted);
+    font-size: 13px;
+    margin: 8px 0 6px;
+    text-align: center;
+}
+.gd-funnel__input:focus,
+.gd-funnel__email-input:focus,
+.gd-funnel__phone-input:focus {
+    outline: none;
+    border-color: rgba(219,9,98,.45);
+    box-shadow: 0 0 0 3px rgba(219,9,98,.10);
+}
+
+.gd-funnel__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.gd-funnel__start-btn,
+.gd-funnel__submit-btn {
+    border: 0;
+    border-radius: 999px;
+    padding: 13px 28px;
+    background: linear-gradient(135deg, var(--gd-accent), var(--gd-primary));
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    box-shadow: 0 12px 28px rgba(15,26,109,.22);
+    transition: transform .16s ease, box-shadow .2s ease, opacity .2s;
+}
+.gd-funnel__start-btn:hover,
+.gd-funnel__submit-btn:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 16px 34px rgba(15,26,109,.30);
+}
+.gd-funnel__submit-btn:disabled {
+    opacity: .42;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.gd-funnel__reset-btn {
+    border: 1px solid rgba(15,26,109,.12);
+    border-radius: 999px;
+    background: transparent;
+    color: var(--gd-muted);
+    padding: 12px 18px;
+    font: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color .16s, border-color .16s;
+}
+.gd-funnel__reset-btn:hover {
+    color: var(--gd-text);
+    border-color: rgba(15,26,109,.26);
+}
+
+/* ---- Profile summary ------------------------------------- */
+.gd-funnel__profile-summary {
+    background: linear-gradient(135deg,
+        rgba(219,9,98,.04), rgba(15,26,109,.03));
+    border: 1px solid rgba(15,26,109,.07);
+    border-radius: 16px;
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.gd-funnel__profile-row {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+    font-size: 14px;
+    line-height: 1.6;
+}
+.gd-funnel__profile-label {
+    font-weight: 700;
+    color: var(--gd-text);
+    min-width: 88px;
+    flex-shrink: 0;
+}
+.gd-funnel__profile-value { color: var(--gd-muted); }
+
+/* ---- Complete phase -------------------------------------- */
+.gd-funnel__complete-msg {
+    color: var(--gd-muted);
+    font-size: 14px;
+    line-height: 1.7;
+    margin: 0 0 14px;
+}
+
+/* ---- Utility --------------------------------------------- */
+.gd-hidden { display: none !important; }
+
+/* ---- Responsive ------------------------------------------ */
+@media (max-width: 600px) {
+    .gd-funnel__inner { padding: 22px 18px 18px; }
+    .gd-funnel__actions { flex-direction: column-reverse; }
+    .gd-funnel__actions--complete { flex-direction: column; }
+    .gd-funnel__start-btn,
+    .gd-funnel__submit-btn,
+    .gd-funnel__reset-btn,
+    .gd-funnel__pdf-btn,
+    .gd-funnel__email-btn { width: 100%; text-align: center; }
+    .gd-advisor__form { flex-direction: column; align-items: stretch; }
+    .gd-advisor__submit { width: 100%; height: 48px; }
+}
+
+/* ====================================================================
+   RICH REPLY — plan text from OpenAI
+   ==================================================================== */
+.gd-funnel__rich-reply {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--gd-text);
+    margin-bottom: 24px;
+    word-break: break-word;
+}
+.gd-funnel__rich-reply strong {
+    font-weight: 700;
+    color: var(--gd-ink);
+}
+
+/* ====================================================================
+   EMAIL CTA CARD
+   ==================================================================== */
+.gd-funnel__email-cta {
+    background: linear-gradient(135deg, rgba(219,9,98,.04), rgba(15,26,109,.03));
+    border: 1px solid rgba(15,26,109,.09);
+    border-radius: 18px;
+    padding: 20px 20px 16px;
+    margin-top: 4px;
+}
+.gd-funnel__email-cta-text {
+    color: var(--gd-muted);
+    font-size: 14px;
+    margin: 0 0 14px;
+}
+
+/* ====================================================================
+   COMPLETE PHASE ACTIONS + PDF / EMAIL BUTTONS
+   ==================================================================== */
+.gd-funnel__actions--complete {
+    margin: 16px 0 28px;
+    flex-wrap: wrap;
+}
+.gd-funnel__pdf-btn,
+.gd-funnel__email-btn {
+    border-radius: 999px;
+    padding: 13px 22px;
+    background: linear-gradient(135deg, rgba(219,9,98,.08), rgba(15,26,109,.06));
+    color: var(--gd-text);
+    font: inherit;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    border: 1px solid rgba(15,26,109,.11);
+    transition: transform .16s ease, box-shadow .2s, opacity .2s;
+}
+.gd-funnel__pdf-btn:hover,
+.gd-funnel__email-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15,26,109,.13);
+}
+.gd-funnel__email-btn:disabled {
+    opacity: .55;
+    cursor: default;
+    transform: none;
+}
+
+/* ====================================================================
+   ADVISOR CHAT
+   ==================================================================== */
+.gd-advisor {
+    margin-top: 32px;
+    border-top: 1px solid rgba(15,26,109,.08);
+    padding-top: 28px;
+}
+.gd-advisor__header {
+    margin-bottom: 16px;
+}
+.gd-advisor__title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--gd-text);
+    margin-bottom: 4px;
+}
+.gd-advisor__subtitle {
+    color: var(--gd-muted);
+    font-size: 14px;
+    margin: 0;
+}
+.gd-advisor__history {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 360px;
+    overflow-y: auto;
+    margin-bottom: 14px;
+    padding: 2px 0;
+    scroll-behavior: smooth;
+}
+.gd-advisor__msg {
+    max-width: 90%;
+    padding: 10px 14px;
+    border-radius: 14px;
+    font-size: 14px;
+    line-height: 1.65;
+    word-break: break-word;
+}
+.gd-advisor__msg--assistant {
+    align-self: flex-start;
+    background: rgba(15,26,109,.05);
+    border: 1px solid rgba(15,26,109,.09);
+    color: var(--gd-text);
+}
+.gd-advisor__msg--user {
+    align-self: flex-end;
+    background: linear-gradient(135deg, rgba(219,9,98,.08), rgba(15,26,109,.06));
+    border: 1px solid rgba(219,9,98,.15);
+    color: var(--gd-text);
+}
+/* Typing indicator */
+.gd-advisor__msg--typing {
+    align-self: flex-start;
+    background: rgba(15,26,109,.05);
+    border: 1px solid rgba(15,26,109,.09);
+    padding: 12px 16px;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    border-radius: 14px;
+}
+.gd-advisor__msg--typing span {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--gd-muted);
+    animation: gd-typing-dot 1.2s infinite;
+}
+.gd-advisor__msg--typing span:nth-child(2) { animation-delay: .2s; }
+.gd-advisor__msg--typing span:nth-child(3) { animation-delay: .4s; }
+@keyframes gd-typing-dot {
+    0%, 60%, 100% { transform: translateY(0); opacity: .38; }
+    30%           { transform: translateY(-5px); opacity: 1; }
+}
+.gd-advisor__form {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+.gd-advisor__input {
+    flex: 1;
+    min-height: 48px;
+    max-height: 120px;
+    resize: vertical;
+    border: 1px solid rgba(15,26,109,.14);
+    border-radius: 14px;
+    background: rgba(248,250,255,.85);
+    color: var(--gd-text);
+    padding: 12px 14px;
+    font: inherit;
+    font-size: 14px;
+    transition: border-color .2s, box-shadow .2s;
+    box-sizing: border-box;
+    width: 100%;
+}
+.gd-advisor__input:focus {
+    outline: none;
+    border-color: rgba(219,9,98,.45);
+    box-shadow: 0 0 0 3px rgba(219,9,98,.10);
+}
+.gd-advisor__submit {
+    flex-shrink: 0;
+    height: 48px;
+    padding: 0 22px;
+    font-size: 14px;
+}
+
+/* ====================================================================
+   PRINT / PDF
+   ==================================================================== */
+@media print {
+    body * { visibility: hidden !important; }
+    .gd-phase--complete,
+    .gd-phase--complete * { visibility: visible !important; }
+    .gd-phase--complete {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        padding: 32px 48px;
+        background: #fff !important;
+        box-shadow: none !important;
+        overflow: visible;
+    }
+    .gd-funnel__actions--complete,
+    .gd-advisor,
+    .gd-funnel__reset-btn,
+    .gd-funnel__pdf-btn { display: none !important; }
+    .gd-funnel__rich-reply {
+        font-size: 13px;
+        line-height: 1.65;
+    }
+    .gd-funnel__step-kicker--done::after {
+        content: ' · gelincicegi.com';
+        font-size: 11px;
+        opacity: .6;
+    }
+}
+
+/* ====================================================================
+   NAME INPUT (intro phase)
+   ==================================================================== */
+.gd-funnel__name-wrap {
+    margin: 20px 0 16px;
+    text-align: left;
+}
+.gd-funnel__name-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--gd-muted);
+    margin-bottom: 8px;
+    letter-spacing: .03em;
+}
+.gd-funnel__name-input {
+    width: 100%;
+    height: 54px;
+    border: 1px solid rgba(15,26,109,.14);
+    border-radius: 14px;
+    background: rgba(248,250,255,.85);
+    color: var(--gd-text);
+    padding: 13px 16px;
+    font: inherit;
+    font-size: 16px;
+    transition: border-color .2s, box-shadow .2s;
+    box-sizing: border-box;
+}
+.gd-funnel__name-input:focus {
+    outline: none;
+    border-color: rgba(219,9,98,.45);
+    box-shadow: 0 0 0 3px rgba(219,9,98,.10);
+}
+/* start btn disabled state */
+.gd-funnel__start-btn:disabled {
+    opacity: .45;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}

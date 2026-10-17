@@ -83,6 +83,11 @@
       const input=form.querySelector('[name="q"]');
       input.placeholder='E.g. New York bridal or Saratoga venue';
       input.setAttribute('aria-label', 'Search by vendor, category or city');
+      // Allow normal space-bar typing in the search field, even if a legacy
+      // autocomplete script registers a conflicting keydown handler.
+      input.addEventListener('keydown', event => {
+        if (event.key === ' ' || event.code === 'Space') event.stopImmediatePropagation();
+      }, true);
       form.append(el('p','gc-catalog-note','Search our directory of US wedding vendors. Results cover the vendors currently listed.'));
       const button=form.querySelector('[type="submit"]');if(button){button.disabled=false;button.removeAttribute('aria-disabled');}
       form.addEventListener('submit',event=>{event.preventDefault();navigate({q:input.value.trim(),page:'',city:'',category:''});});

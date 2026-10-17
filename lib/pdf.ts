@@ -5,7 +5,7 @@ import { planText, type Profile } from "./planning";
 
 export async function createPlanPdf(profile: Profile) {
   const doc = await PDFDocument.create();
-  doc.setTitle("Gelin Çiçeği — Düğün Planı");
+  doc.setTitle("Gelin Çiçeği — Wedding Plan");
   doc.setAuthor("Gelin Çiçeği");
   doc.registerFontkit(fontkit);
   const bytes = Uint8Array.from(atob(pdfFontBase64), char => char.charCodeAt(0));

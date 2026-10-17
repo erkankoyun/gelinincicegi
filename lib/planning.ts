@@ -6,17 +6,17 @@ export type Profile = {
   history: { role: "user" | "assistant"; content: string }[];
 };
 export const questions = [
-  "Düğününü Amerika'nın hangi şehrinde ve eyaletinde planlıyorsun? Örneğin New York, NY veya Miami, FL.",
-  "Yaklaşık kaç davetlin olacak? Örneğin 100 veya 150–180 kişi.",
-  "Düğün için toplam bütçen kaç ABD doları? Örneğin $30,000 veya 40000 USD.",
-  "Nasıl bir düğün hayal ediyorsun? Örneğin modern, klasik, bahçe, sahil veya sade bir nikâh.",
-  "En önemli iki önceliğin ne? Mekân, fotoğraf, gelinlik, yemek, eğlence veya bütçe kontrolü yazabilirsin.",
+  "Which US city and state are you planning your wedding in? For example, New York, NY or Miami, FL.",
+  "About how many guests are you expecting? For example, 100 or 150–180 guests.",
+  "What is your total wedding budget in US dollars? For example, $30,000 or 40000 USD.",
+  "What kind of wedding are you dreaming of? For example, modern, classic, garden, beach or an intimate ceremony.",
+  "What are your two biggest priorities? You could choose the venue, photography, bridal wear, food, entertainment or budget management.",
 ];
 export const budgetRows = [
-  { label: "Mekân ve yemek", percent: 45 }, { label: "Fotoğraf ve video", percent: 12 },
-  { label: "Gelinlik ve kıyafet", percent: 10 }, { label: "Çiçek ve dekor", percent: 8 },
-  { label: "Müzik ve eğlence", percent: 8 }, { label: "Diğer giderler", percent: 7 },
-  { label: "Yedek bütçe", percent: 10 },
+  { label: "Venue and catering", percent: 45 }, { label: "Photography and video", percent: 12 },
+  { label: "Bridal wear and attire", percent: 10 }, { label: "Flowers and decor", percent: 8 },
+  { label: "Music and entertainment", percent: 8 }, { label: "Other expenses", percent: 7 },
+  { label: "Contingency fund", percent: 10 },
 ];
 export const money = (n: number) => new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 }).format(n);
 export function parseAmount(input: string) {
@@ -32,19 +32,19 @@ export function createProfile(name: string): Profile {
 }
 export function answerQuestion(profile: Profile, answer: string) {
   answer = answer.replace(/\s+/g, " ").trim();
-  if (answer.length > 500) return "Yanıtını 500 karakterden kısa yazabilir misin?";
+  if (answer.length > 500) return "Please keep your answer under 500 characters.";
   const step = profile.answers.length;
-  if (step >= 5) return "Profil zaten tamamlandı.";
+  if (step >= 5) return "Your profile is already complete.";
   if (step === 0) {
-    if (answer.length < 2 || !/[a-zA-ZçğıöşüÇĞİÖŞÜ]/.test(answer)) return "Lütfen şehir ve eyalet adını yaz.";
+    if (answer.length < 2 || !/[a-zA-ZçğıöşüÇĞİÖŞÜ]/.test(answer)) return "Please enter your city and state.";
     profile.city = answer;
   } else if (step === 1) {
     const count = parseAmount(answer);
-    if (!Number.isFinite(count) || count < 1 || count > 10000) return "Lütfen 1 ile 10.000 arasında bir davetli sayısı yaz.";
+    if (!Number.isFinite(count) || count < 1 || count > 10000) return "Please enter a guest count between 1 and 10,000.";
     profile.guests = Math.ceil(count);
   } else if (step === 2) {
     const budget = parseAmount(answer);
-    if (!Number.isFinite(budget) || budget < 100 || budget > 10000000) return "Lütfen toplam bütçeni ABD doları olarak yaz. Örneğin 30000 USD.";
+    if (!Number.isFinite(budget) || budget < 100 || budget > 10000000) return "Please enter your total budget in US dollars, for example 30000 USD.";
     profile.budget = Math.round(budget);
   } else if (step === 3) profile.style = answer;
   else profile.priorities = answer;
@@ -57,22 +57,22 @@ export function suggestedVendors(profile: Profile) {
   return searchVendors("", "", city).results.slice(0, 4);
 }
 export function planText(p: Profile) {
-  const budget = budgetRows.map(r => `${r.label}: ${money(Math.round(p.budget*r.percent/100))} (%${r.percent})`).join("\n");
+  const budget = budgetRows.map(r => `${r.label}: ${money(Math.round(p.budget*r.percent/100))} (${r.percent}%)`).join("\n");
   const matches = suggestedVendors(p);
-  return `${p.name}, düğün profilin hazır!\n\n**Düğün profilin**\nŞehir: ${p.city}\nDavetli: ${p.guests} kişi\nToplam bütçe: ${money(p.budget)}\nTarz: ${p.style}\nÖncelikler: ${p.priorities}\n\n**Önerilen bütçe dağılımı**\n${budget}\n\nBu dağılım bir planlama örneğidir; firma teklifi veya güncel piyasa fiyatı değildir. Kişi başına toplam planlama bütçen yaklaşık ${money(p.budget/p.guests)}.\n\n**İlk adımların**\n1. Tarihini ve şehir/eyalet tercihini netleştir.\n2. En az üç mekândan tüm ücretleri içeren yazılı teklif iste. Vergi, servis bedeli, iptal ve yağmur planını karşılaştır.\n3. Mekân netleşince fotoğraf, müzik ve kıyafet randevularını planla.\n4. Yerleşim ve yemek seçimini davetli sayısıyla birlikte takip et.\n5. Vergi ve servis bedellerinin toplam bütçenin içinde olduğunu kontrol et; yedek bütçeni ayır.\n\n**Firma araştırması**\n${matches.length ? matches.map(v=>`${v.name} — ${v.city}\n${v.url}`).join("\n") : "Bu şehir için indeksimizde henüz firma bulunmuyor. Yakındaki şehirleri arayabilir ve resmi firma sitelerinden teklif isteyebilirsin."}\n\nRezervasyon, uygun tarih ve fiyat bilgilerini doğrudan firmadan doğrula.`;
+  return `${p.name}, your wedding profile is ready!\n\n**Your wedding profile**\nCity: ${p.city}\nGuests: ${p.guests}\nTotal budget: ${money(p.budget)}\nStyle: ${p.style}\nPriorities: ${p.priorities}\n\n**Suggested budget breakdown**\n${budget}\n\nThis breakdown is a planning example, not a vendor quote or current market pricing. Your total planning budget per guest is approximately ${money(p.budget/p.guests)}.\n\n**Your first steps**\n1. Confirm your preferred date, city and state.\n2. Request written, all-inclusive quotes from at least three venues. Compare taxes, service charges, cancellation terms and rain plans.\n3. Once your venue is confirmed, schedule photography, music and bridal appointments.\n4. Track your seating arrangements and menu choices alongside your guest count.\n5. Include taxes and service charges in your total budget, and set aside your contingency fund.\n\n**Vendors to research**\n${matches.length ? matches.map(v=>`${v.name} — ${v.city}\n${v.url}`).join("\n") : "Our directory does not have vendors in this city yet. Try nearby cities and request quotes through vendors’ official websites."}\n\nConfirm reservations, availability and pricing directly with each vendor.`;
 }
 export function guideReply(p: Profile, message: string) {
   const text = normalize(message);
-  if (/rezerv|available|musait|book/.test(text)) return "Canlı müsaitlik veya rezervasyon yetkim yok. Firma aramasından resmi siteye ulaşarak tarih ve fiyatı doğrudan doğrula. Yazılı sözleşmeyi ve iade/iptal koşullarını görmeden ödeme planını kesinleştirme.";
-  if (/butce|budget|maliyet|fiyat|cost/.test(text)) return `${p.name}, ${money(p.budget)} bütçende ${money(p.budget*0.45)} tutarını mekân ve yemek için bir ilk dağılım olarak ayırabilirsin. ${p.guests} davetli için toplam kişi başı bütçe yaklaşık ${money(p.budget/p.guests)}. Bu bir teklif değildir. Vergi, servis bedeli ve sözleşmedeki zorunlu ekleri yazılı iste; tüm kalemleri toplam bütçene dâhil et.`;
-  if (/mekan|venue|salon|yer/.test(text)) return `${p.city} için önce ${p.guests} kişilik oturmalı kapasite, tarih ve ${p.style} tarzını karşılaştır. En az üç mekândan yazılı teklif iste; yemek ve içecek kapsamı, vergi/servis bedeli, erişilebilirlik, iptal ve kötü hava planı aynı listede bulunsun. ${suggestedVendors(p).map(v=>v.name+": "+v.url).join("\n") || "Bu şehirde henüz kayıtlı firmamız yok; başka bir şehri arayabilirsin."}`;
-  if (/fotograf|photo|video/.test(text)) return "Fotoğrafçıdan tam bir düğün albümü örneği, teslim süresi, çekim saatleri, ikinci fotoğrafçı, yedek ekipman ve kullanım haklarını yazılı iste. Fotoğraf ve video için planındaki başlangıç payı " + money(p.budget*0.12) + ". Bu pay bir firma fiyatı değildir.";
-  if (/gelinlik|dress|bridal|kiyafet/.test(text)) return `${p.style} tarzını, mekânın zeminini ve mevsimi gelinlik randevusuna götür. Teslim tarihi, prova ve tadilat ücretlerini sor. Kıyafet için örnek bütçe payın ${money(p.budget*0.10)}; güncel fiyatı mağazadan doğrula.`;
-  if (/takvim|timeline|tarih|zaman|schedule/.test(text)) return "Önce tarih ve mekânı birlikte netleştir. Ardından fotoğraf, müzik, kıyafet ve davetli listesini planla. Düğüne yaklaşırken nihai davetli sayısı, oturma planı ve firma teslim saatlerini tek bir gün akışında birleştir. Kesin süreleri her firmanın sözleşmesine göre belirle.";
-  if (/yemek|cater|menu|food|alerji/.test(text)) return `${p.guests} kişi için servis türünü ve kesin sayı bildirim tarihini sor. Menü tadımı, alerjiler, vejetaryen seçenekler, çocuk menüsü, personel ve ekipman teklifin içinde açıkça yazsın. Vergi ve servis bedelini toplam teklifin dışında bırakma.`;
-  if (/cicek|flower|dekor|decor/.test(text)) return `${p.style} tarzını en fazla birkaç ana renk ve odak noktasıyla tanımla. Çiçek/dekor için ilk örnek payın ${money(p.budget*0.08)}. Mevsimsel alternatifleri, kurulum/toplama saatlerini ve kiralama iade şartlarını sor.`;
-  if (/muzik|music|dj|band|eglence/.test(text)) return "Müzik hizmetinde süre, mola planı, ses/ışık kapsamı, mekânın ses sınırı, yedek ekipman ve fazla saat ücretini yazılı karşılaştır. Giriş, ilk dans ve son şarkı tercihlerini ayrı listele.";
-  if (/oturma|seating|masa|guest|davetli/.test(text)) return `${p.guests} davetliyi aile ve arkadaş gruplarına ayırıp Oturma Planı aracına ekleyebilirsin. Birlikte veya ayrı oturması gereken kişileri belirt; erişilebilirlik, çocuk koltuğu ve servis koridorlarını son kontrolde değerlendir.`;
-  if (/rezerv|available|musait|teklif|book/.test(text)) return "Canlı müsaitlik veya rezervasyon yetkim yok. Firma aramasından resmi siteye ulaşarak tarih ve fiyatı doğrudan doğrula. Yazılı sözleşmeyi ve iade/iptal koşullarını görmeden ödeme planını kesinleştirme.";
-  return `${p.name}, profilini (${p.city}, ${p.guests} kişi, ${money(p.budget)}) kullanarak bütçe, mekân, fotoğraf, gelinlik, yemek, müzik ve takvim konusunda yardımcı olabilirim. Şu anda planlama rehberi çalışıyor; serbest yapay zekâ sohbeti henüz etkin değil. Sorunu bu başlıklardan biriyle biraz daha ayrıntılı yazar mısın?`;
+  if (/rezerv|available|availability|musait|book/.test(text)) return "I cannot check live availability or make reservations. Use vendor search to visit the official website and confirm dates and pricing directly. Review the written contract and refund or cancellation terms before finalizing your payment schedule.";
+  if (/butce|budget|maliyet|fiyat|cost|price/.test(text)) return `${p.name}, with your ${money(p.budget)} budget, you could start by allocating ${money(p.budget*0.45)} to the venue and catering. With ${p.guests} guests, your total budget per guest is approximately ${money(p.budget/p.guests)}. These are planning allocations, not vendor quotes. Ask for taxes, service charges and mandatory extras in writing, and include every item in your total budget.`;
+  if (/mekan|venue|salon/.test(text)) return `For ${p.city}, compare seated capacity for ${p.guests} guests, your preferred date and your ${p.style} style. Request at least three written quotes covering food and drinks, taxes and service charges, accessibility, cancellation terms and a bad-weather plan. ${suggestedVendors(p).map(v=>v.name+": "+v.url).join("\n") || "Our directory has no vendors in this city yet. Try searching a nearby city."}`;
+  if (/fotograf|photo|video/.test(text)) return "Ask photographers for a full wedding gallery, delivery schedule, coverage hours, second-photographer options, backup equipment and image usage rights in writing. The starting photography and video allocation in your plan is " + money(p.budget*0.12) + ". This allocation is not a vendor quote.";
+  if (/gelinlik|dress|bridal|kiyafet|attire/.test(text)) return `Bring your ${p.style} inspiration, venue details and wedding season to your bridal appointment. Ask about delivery dates, fittings and alteration fees. Your example attire allocation is ${money(p.budget*0.10)}; confirm current prices with the boutique.`;
+  if (/takvim|timeline|tarih|zaman|schedule/.test(text)) return "Start by confirming your date and venue together. Then plan photography, music, attire and your guest list. As the day approaches, combine your final guest count, seating chart and vendor arrival times into one wedding-day schedule. Base specific deadlines on each vendor’s contract.";
+  if (/yemek|cater|menu|food|alerji|allerg/.test(text)) return `For ${p.guests} guests, ask about service style and the deadline for your final headcount. Make sure your quote clearly covers a tasting, allergies, vegetarian options, children’s meals, staffing and equipment. Include taxes and service charges in the total.`;
+  if (/cicek|flower|dekor|decor|florist/.test(text)) return `Define your ${p.style} look with a few main colors and focal points. Your starting example allocation for flowers and decor is ${money(p.budget*0.08)}. Ask about seasonal alternatives, setup and collection times, and rental return terms.`;
+  if (/muzik|music|dj|band|eglence|entertain/.test(text)) return "Compare coverage hours, breaks, sound and lighting, venue noise limits, backup equipment and overtime charges in writing. List your entrance music, first dance and last song separately.";
+  if (/oturma|seating|masa|guest|davetli/.test(text)) return `Organize your ${p.guests} guests into family and friend groups, then add them to the Seating Planner. Specify who should sit together or apart. Check accessibility, high chairs and service aisles before finalizing the layout.`;
+  if (/teklif|quote/.test(text)) return "Use vendor search to request written quotes directly from official websites. Compare the same guest count, date and service scope, and ask each vendor to include taxes, service charges and mandatory extras.";
+  return `${p.name}, I can use your profile (${p.city}, ${p.guests} guests, ${money(p.budget)}) to help with budgets, venues, photography, bridal wear, catering, music and timelines. You are using the planning guide; open-ended AI chat is not enabled yet. Could you add more detail about one of these topics?`;
 }

@@ -1,35 +1,36 @@
-# Gelin Çiçeği — Amerika
+# Gelin Çiçeği — US Wedding Planning
 
-ABD düğün firmaları için arama, beş adımlı düğün danışmanı, PDF planı, firma haritası ve oturma planı. Kaynak tasarım korunmuştur; favicon, kullanıcının sağladığı gül görselidir.
+English-language US wedding vendor search, a five-step wedding planning guide, PDF plans, a vendor map and a seating planner. The existing visual design and the rose favicon supplied by the owner are preserved.
 
-## Çalışan akışlar
+## Features
 
-- `/api/search`: 28 resmi kaynaklı ABD firma kaydında Türkçe/İngilizce anahtar sözcük araması; kategori/şehir filtreleri ve sayfalama. Kayıtlar `lib/vendors.json` içinde kaynak URL ve kontrol tarihiyle tutulur. Bu, tüm interneti arayan bir motor değildir. İşletmelere ait fiyat, puan veya canlı müsaitlik uydurulmaz.
-- `/api/advisor`: Beş soruyla ABD şehri, davetli, USD bütçesi, tarz ve öncelikleri alır. Profil D1 üzerinde 30 gün erişilebilir kalır; rastgele 256 bit oturum anahtarıyla korunur. Soru yanıtları, iletişim kaydı, kaldığı yerden devam, sıfırlama ve PDF çıktısı desteklenir.
-- PDF: Türkçe karakter desteği, bütçe dağılımı ve kişisel adımlar içeren gerçek PDF dosyası.
-- Danışman: Varsayılan olarak açıkça etiketlenen planlama rehberi. Yapay zekâ için gerekli servis ayarları girildiğinde AI SDK üzerinden gerçek model yanıtı kullanılır. Yapay zekâ hatası durumunda başarılı yanıt taklidi yapılmaz.
-- E-posta: Kayıt işlemi otomatik e-posta göndermez. İlgili düğmeye ziyaretçi bastığında, kendi profilindeki e-posta adresine işlem e-postası gönderilir. Gönderim ancak Resend ve doğrulanmış gönderen ayarları tamamlandığında açılır; aksi halde PDF seçeneği sunulur.
-- Harita: Şehir düzeyinde yaklaşık ABD konumları, resmi site ve yol tarifi bağlantıları. Kesin adres iddiasında bulunulmaz.
+- `/api/search`: searches 28 US vendor records using English and Turkish keywords, with city/category filters and pagination. Records in `lib/vendors.json` include official source URLs and review dates. Coverage is limited to this directory; it does not search the whole web. No prices, ratings or live availability are invented.
+- `/api/advisor`: collects a US city, guest count, USD budget, style and priorities. Profiles are stored in D1 for 30 days and protected by random 256-bit session tokens. Supports contact details, resume, reset, follow-up questions and PDF downloads.
+- PDF: English budget breakdown and personal next steps, with Unicode support for the brand and visitor names.
+- Advisor: a clearly labeled planning guide by default. When the optional AI credentials are configured, AI SDK provides model responses in English by default. AI failures return an explicit error.
+- Email: saving a profile does not send email. Delivery is available only after Resend and a verified sender are configured, and only when a visitor clicks the email button for their own saved address. Otherwise, a PDF download is offered.
+- Map: approximate city locations, official websites and directions. Exact business addresses should be confirmed with vendors.
+- Seating: English controls, sample guests, warnings and printable output; `stage` and `aisle` preferences are supported.
 
-## Geliştirme
+## Development
 
-Node.js 22.13+ ve pnpm gerekir. `pnpm install`, `pnpm test`, `pnpm exec tsc --noEmit`, `pnpm build`.
+Requires Node.js 22.13+ and pnpm. Run `pnpm install`, `pnpm test`, `pnpm exec tsc --noEmit`, and `pnpm build`.
 
-Statik sayfalar ve görseller `public/`; sunucu API yolları `app/api/`; iş mantığı `lib/`; D1 şeması `db/schema.ts`; sürümlü şema göçleri `drizzle/` içindedir. D1 binding adı `DB` olarak korunmalıdır. Sites yayınında şema göçleri uygulanır. `dist/`, bağımlılıklar, yerel durum ve gerçek ortam dosyaları kaynak depoya eklenmez.
+Static pages and assets are in `public/`, API routes in `app/api/`, business logic in `lib/`, the D1 schema in `db/schema.ts`, and versioned migrations in `drizzle/`. Keep the D1 binding named `DB`. Sites applies migrations during publication. Build output, dependencies, local runtime state and real environment files must not be added to the repository.
 
-## Servis ayarları
+## Optional service configuration
 
-`.env.example` yalnızca değişken adlarını içerir. Gerçek değerler Sites çalışma ortamı ayarlarında secret olarak tanımlanır; tarayıcıya veya GitHub'a yazılmaz.
+`.env.example` contains names only. Configure actual values as secrets in the Sites runtime. Never put credentials in browser code or GitHub.
 
-| Değişken | Kullanım |
+| Variable | Purpose |
 | --- | --- |
-| `AI_GATEWAY_API_KEY` | AI Gateway erişim anahtarı |
-| `AI_MODEL` | Gateway'in güncel model listesinde bulunan `provider/model` kimliği |
-| `RESEND_API_KEY` | İşlem e-postası gönderimi için kısıtlı API anahtarı |
-| `EMAIL_FROM` | Kullanıcının doğruladığı alandaki gönderen adresi |
+| `AI_GATEWAY_API_KEY` | AI Gateway access key |
+| `AI_MODEL` | A `provider/model` identifier available in the Gateway model catalog |
+| `RESEND_API_KEY` | Restricted key for transactional email delivery |
+| `EMAIL_FROM` | Sender address on an owner-verified domain |
 
-AI Gateway model kataloğu: https://ai-gateway.vercel.sh/v1/models
+AI Gateway model catalog: https://ai-gateway.vercel.sh/v1/models
 
-Resend gönderim belgesi: https://resend.com/docs/api-reference/emails/send-email
+Resend API reference: https://resend.com/docs/api-reference/emails/send-email
 
-Özgün sitenin kapalı sunucu kodu ve taranmış firma indeksi bu arşivde yoktur. Tam veri kapsamını aktarmak için sahibinden kaynak/veritabanı dışa aktarımı veya belgelenmiş API erişimi gerekir. ABD firma kapsamı bu bağımsız başlangıç indeksiyle sınırlıdır. Bu sürümde gerçek AI ve e-posta anahtarları yapılandırılmamıştır; onaylı servis bilgileri sağlandığında etkinleştirilebilir.
+The original site's private server code and crawled vendor index were not included in the supplied archive. Migrating that coverage requires a source/database export or documented API access from its owner. This independent implementation uses the starter US directory described above. Real AI and email credentials are not configured in this version.

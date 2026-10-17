@@ -1,15 +1,14 @@
 (function () {
   'use strict';
-  const labels = { bridal: 'Gelinlik', venue: 'Mekân', photography: 'Fotoğraf', catering: 'Catering', florist: 'Çiçek' };
+  const labels = { bridal: 'Bridal wear', venue: 'Venue', photography: 'Photography', catering: 'Catering', florist: 'Florist' };
   document.addEventListener('DOMContentLoaded', function () {
     const intro = document.querySelector('.solr-search-intro-layout');
     const layout = document.querySelector('.solr-search-layout');
     const column = document.querySelector('.solr-search-layout__main');
     if (!intro || !layout || !column) return;
     const oldResults = column.querySelector('.tx-solr-search-results-plugin');
-    if (oldResults) oldResults.hidden = true;
     const results = document.createElement('section');
-    results.className = 'gc-results'; results.setAttribute('aria-label', 'Firma arama sonuçları');
+    results.className = 'gc-results'; results.setAttribute('aria-label', 'Vendor search results');
     column.appendChild(results);
     const forms = Array.from(document.querySelectorAll('form.tx-solr-search-form, form[id="tx-solr-search-form-pi-results"]')).filter(f => f.querySelector('[name="q"]'));
     let state = new URLSearchParams(location.search);
@@ -24,7 +23,7 @@
     function addSelect(parent, label, key, values) {
       const wrap = el('label','gc-filter'); wrap.append(el('span','',label));
       const select = el('select'); select.setAttribute('aria-label',label);
-      const all = el('option','','Tümü'); all.value = ''; select.append(all);
+      const all = el('option','','All'); all.value = ''; select.append(all);
       values.forEach(value => { const option = el('option','',labels[value] || value); option.value = value; option.selected = state.get(key) === value; select.append(option); });
       select.addEventListener('change',()=>navigate({[key]:select.value,page:''}));
       wrap.append(select); parent.append(wrap);
@@ -32,22 +31,29 @@
     async function run() {
       const q = state.get('q') || '';
       forms.forEach(form => { form.querySelector('[name="q"]').value=q; });
+      // The retained layout CSS hides results while the Solr initial class remains.
+      // Keep its form visible and transition the wrapper to the results state.
+      if (oldResults) {
+        oldResults.hidden = false;
+        oldResults.classList.remove('tx-solr-search--initial', 'tx-solr-no-results');
+        oldResults.classList.add('tx-solr-search--results');
+      }
       intro.style.display='none'; layout.style.display='';
-      results.replaceChildren(el('p','gc-search-status','Firmalar aranıyor…'));
+      results.replaceChildren(el('p','gc-search-status','Searching vendors…'));
       results.setAttribute('aria-busy','true');
       if (controller) controller.abort(); controller = new AbortController();
       try {
         const response = await fetch(url(),{signal:controller.signal});
-        if (!response.ok) throw new Error('Arama hizmetine ulaşılamıyor. Lütfen tekrar dene.');
+        if (!response.ok) throw new Error('Search is unavailable. Please try again.');
         const data = await response.json();
         results.replaceChildren();
-        const title = el('h2','gc-results-title', q ? '“'+q+'” için sonuçlar' : 'Amerika’daki düğün firmaları');
-        const count = el('p','gc-search-status',data.total+' sonuç · '+data.indexed_count+' kayıtlı firma'); count.setAttribute('role','status');
+        const title = el('h2','gc-results-title', q ? 'Results for “'+q+'”' : 'US wedding vendors');
+        const count = el('p','gc-search-status',data.total+' results · '+data.indexed_count+' listed vendors'); count.setAttribute('role','status');
         results.append(title,count);
-        const filters = el('div','gc-filters'); addSelect(filters,'Kategori','category',data.categories); addSelect(filters,'Şehir','city',data.cities); results.append(filters);
+        const filters = el('div','gc-filters'); addSelect(filters,'Category','category',data.categories); addSelect(filters,'City','city',data.cities); results.append(filters);
         if (!data.results.length) {
-          results.append(el('p','gc-empty','Bu arama için kayıtlı firma bulunamadı. Şehri veya kategoriyi değiştirerek tekrar dene.'));
-          const browse = el('button','gc-action','Tüm firmaları gör'); browse.type='button'; browse.onclick=()=>navigate({q:'',city:'',category:'',page:''}); results.append(browse);
+          results.append(el('p','gc-empty','No listed vendors match your search. Try another city or category.'));
+          const browse = el('button','gc-action','Browse all vendors'); browse.type='button'; browse.onclick=()=>navigate({q:'',city:'',category:'',page:''}); results.append(browse);
         }
         data.results.forEach(vendor=>{
           const card=el('article','gc-result');
@@ -56,26 +62,28 @@
           const address=el('a','gc-result-url',new URL(vendor.url).hostname);address.href=vendor.url;address.target='_blank';address.rel='noopener noreferrer';
           const desc=el('p','',vendor.description);
           const actions=el('div','gc-result-actions');
-          const visit=el('a','gc-action','Resmi siteyi aç');visit.href=vendor.url;visit.target='_blank';visit.rel='noopener noreferrer';
-          const map=el('a','gc-action gc-action-secondary','Haritada gör');map.href='harita.html?vendor='+encodeURIComponent(vendor.id);
+          const visit=el('a','gc-action','Visit website');visit.href=vendor.url;visit.target='_blank';visit.rel='noopener noreferrer';
+          const map=el('a','gc-action gc-action-secondary','View on map');map.href='harita.html?vendor='+encodeURIComponent(vendor.id);
           actions.append(visit,map);card.append(meta,heading,address,desc,actions);results.append(card);
         });
         if (data.pages>1) {
-          const paging=el('nav','gc-pagination');paging.setAttribute('aria-label','Sonuç sayfaları');
-          const previous=el('button','gc-action','Önceki');previous.disabled=data.page<=1;previous.onclick=()=>navigate({page:String(data.page-1)});
-          const next=el('button','gc-action','Sonraki');next.disabled=data.page>=data.pages;next.onclick=()=>navigate({page:String(data.page+1)});
+          const paging=el('nav','gc-pagination');paging.setAttribute('aria-label','Search result pages');
+          const previous=el('button','gc-action','Previous');previous.disabled=data.page<=1;previous.onclick=()=>navigate({page:String(data.page-1)});
+          const next=el('button','gc-action','Next');next.disabled=data.page>=data.pages;next.onclick=()=>navigate({page:String(data.page+1)});
           paging.append(previous,el('span','',data.page+' / '+data.pages),next);results.append(paging);
         }
-        results.append(el('p','gc-catalog-note','Sonuçlar şu anda kayıtlı Amerika firmalarıyla sınırlıdır. Fiyat, hizmet bölgesi ve uygun tarihi resmi firma sitesinden doğrula.'));
+        results.append(el('p','gc-catalog-note','Results currently cover the US vendors in our directory. Confirm pricing, service areas and availability on each vendor’s official website.'));
       } catch (error) {
         if (error.name==='AbortError') return;
         results.replaceChildren(el('p','gc-error',error.message));
-        const retry=el('button','gc-action','Tekrar dene');retry.onclick=run;results.append(retry);
+        const retry=el('button','gc-action','Try again');retry.onclick=run;results.append(retry);
       } finally { results.setAttribute('aria-busy','false'); }
     }
     forms.forEach(form=>{
       const input=form.querySelector('[name="q"]');
-      input.placeholder='Örn. New York gelinlik veya Saratoga mekân';
+      input.placeholder='E.g. New York bridal or Saratoga venue';
+      input.setAttribute('aria-label', 'Search by vendor, category or city');
+      form.append(el('p','gc-catalog-note','Search our directory of US wedding vendors. Results cover the vendors currently listed.'));
       const button=form.querySelector('[type="submit"]');if(button){button.disabled=false;button.removeAttribute('aria-disabled');}
       form.addEventListener('submit',event=>{event.preventDefault();navigate({q:input.value.trim(),page:'',city:'',category:''});});
       const suggestions=el('div','gc-suggestions');suggestions.hidden=true;suggestions.setAttribute('role','listbox');input.parentElement.append(suggestions);

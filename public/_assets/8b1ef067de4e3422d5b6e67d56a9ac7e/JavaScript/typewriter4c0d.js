@@ -1,5 +1,5 @@
 (function () {
-    var words = ['Gelinlik...', 'Alyans...', 'Gelin Arabası...', 'Nikah Salonu...', 'Düğün Fotoğrafçısı...', 'Çiçek Süsleme...', 'Davetiye...'];
+    var words = ['New York bridal...', 'Wedding venues...', 'Wedding photographers...', 'Wedding flowers...', 'Wedding catering...', 'Saratoga venue...'];
 
     function startTypewriter(el) {
         var wordIndex = 0, charIndex = 0, deleting = false;

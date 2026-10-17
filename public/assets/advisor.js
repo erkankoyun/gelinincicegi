@@ -17,7 +17,7 @@
     async function api(mode,values={}){
       const response=await fetch('/api/advisor',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({mode,session_id:session,...values})});
       if(mode==='download_pdf'&&response.ok)return response.blob();
-      const data=await response.json();if(!response.ok)throw new Error(data.error||'İşlem tamamlanamadı.');return data;
+      const data=await response.json();if(!response.ok)throw new Error(data.error||'We could not complete that request.');return data;
     }
     async function action(fn){if(busy)return;busy=true;notice.textContent='';controls();try{await fn();}catch(error){notice.textContent=error.message;}finally{busy=false;controls();}}
     function append(role,text){const item=document.createElement('div');item.className='gd-advisor__msg gd-advisor__msg--'+role;rich(item,text);historyBox.append(item);historyBox.scrollTop=historyBox.scrollHeight;}
@@ -25,18 +25,18 @@
       last=data;if(data.session_id){session=data.session_id;localStorage.setItem(key,session);}
       const progress=$('.gd-funnel__progress-fill');if(progress)progress.style.width=(data.is_complete?100:Math.min(95,(data.question_count||1)*16))+'%';
       const step=$('.gd-funnel__step-num');if(step)step.textContent=String(data.question_count||1);
-      const badge=$('.gd-funnel__badge');if(badge)badge.textContent=(data.advisor_mode==='ai'?'Düğün Danışmanı':'Düğün Planlama Rehberi')+' · Gelin Çiçeği';
+      const badge=$('.gd-funnel__badge');if(badge)badge.textContent=(data.advisor_mode==='ai'?'Wedding Advisor':'Wedding Planning Guide')+' · Gelin Çiçeği';
       if(data.is_complete){
         const stage=data.needs_email?'email':'complete';rich(phases[stage]?.querySelector('.gd-funnel__rich-reply'),data.reply);phase(stage);
         if(stage==='complete'){
           historyBox.replaceChildren();(data.profile?.history||[]).forEach(msg=>append(msg.role==='user'?'user':'assistant',msg.content));
           if(sendEmail){sendEmail.disabled=!data.email_enabled;sendEmail.hidden=!data.email_enabled;}
-          if(emailStatus){emailStatus.style.display='block';emailStatus.textContent=data.email_enabled?'E-posta göndermek için aşağıdaki düğmeye basabilirsin.':'Planını PDF olarak indirebilirsin. E-posta gönderimi henüz etkin değil.';}
-          const mode=$('.gd-advisor__mode');if(mode)mode.textContent=data.advisor_mode==='ai'?'Yapay zekâ danışmanı':'Planlama rehberi · Bütçe, mekân, takvim ve tedarikçi soruları';
+          if(emailStatus){emailStatus.style.display='block';emailStatus.textContent=data.email_enabled?'Use the button below to email your plan.':'Download your plan as a PDF. Email delivery is not enabled yet.';}
+          const mode=$('.gd-advisor__mode');if(mode)mode.textContent=data.advisor_mode==='ai'?'AI Wedding Advisor':'Planning guide · Budget, venue, timeline and vendor questions';
         }
       }else{
         const question=$('.gd-funnel__question');if(question)question.textContent=data.next_question;
-        const ack=$('.gd-funnel__ack');if(ack)ack.textContent=data.question_count>1?'Yanıtını kaydettim. Birlikte devam edelim.':'Merhaba '+data.user_name+'!';
+        const ack=$('.gd-funnel__ack');if(ack)ack.textContent=data.question_count>1?'Your answer is saved. Let’s keep going.':'Hi '+data.user_name+'!';
         answer.value='';answer.disabled=false;phase('question');setTimeout(()=>answer.focus(),40);
       }
     }
@@ -49,9 +49,9 @@
     chatInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey&&!busy&&chatInput.value.trim()){e.preventDefault();chatForm.requestSubmit();}});
     chatForm.addEventListener('submit',e=>{e.preventDefault();const message=chatInput.value.trim();if(!message)return;action(async()=>{const data=await api('advisor_chat',{message});append('user',message);append('assistant',data.reply);chatInput.value='';});});
     root.querySelectorAll('.gd-funnel__reset-btn').forEach(button=>button.addEventListener('click',()=>action(async()=>{if(session)await api('reset');session='';last=null;localStorage.removeItem(key);name.value='';answer.value='';email.value='';phone.value='';historyBox.replaceChildren();phase('intro');})));
-    pdf.addEventListener('click',()=>action(async()=>{const blob=await api('download_pdf');const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='gelin-cicegi-dugun-plani.pdf';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}));
+    pdf.addEventListener('click',()=>action(async()=>{const blob=await api('download_pdf');const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='gelin-cicegi-wedding-plan.pdf';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}));
     sendEmail.addEventListener('click',()=>action(async()=>{const data=await api('email_plan');if(emailStatus)emailStatus.textContent=data.message;}));
-    const mode=document.createElement('p');mode.className='gd-advisor__mode';mode.textContent='Planlama rehberi';chatForm.before(mode);
+    const mode=document.createElement('p');mode.className='gd-advisor__mode';mode.textContent='Planning guide';chatForm.before(mode);
     phase('intro');controls();
     if(session)action(async()=>{try{display(await api('resume'));}catch{session='';localStorage.removeItem(key);phase('intro');}});
   });

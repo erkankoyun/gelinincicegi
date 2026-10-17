@@ -10,10 +10,10 @@ export function normalize(value: string) {
   return value.toLocaleLowerCase("tr-TR").replace(/ı/g, "i").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9 ]/g, " ").replace(/\s+/g, " ").trim();
 }
 const aliases: Record<string, string> = {
-  gelinlik: "bridal", gelinligi: "bridal", dress: "bridal", dresses: "bridal", bridal: "bridal",
+  gelinlik: "bridal", gelinligi: "bridal", dress: "bridal", dresses: "bridal", bridal: "bridal", gown: "bridal", gowns: "bridal", boutiques: "bridal",
   mekan: "venue", mekani: "venue", salon: "venue", venues: "venue", venue: "venue",
-  fotograf: "photography", fotografci: "photography", photographer: "photography", photo: "photography",
-  cicek: "florist", cicekci: "florist", flowers: "florist", catering: "catering",
+  fotograf: "photography", fotografci: "photography", photographer: "photography", photographers: "photography", photos: "photography", photo: "photography",
+  cicek: "florist", cicekci: "florist", flowers: "florist", flower: "florist", florists: "florist", catering: "catering",
   nyc: "new york", istanbul: "istanbul", dugun: "wedding", dugunu: "wedding", weddings: "wedding",
 };
 export function searchVendors(query = "", category = "", city = "", page = 1) {

@@ -63,12 +63,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function buildPlannerBudget(budget, weddingType, priority) {
 		var allocation = [
-			{ label: 'Mekan', percent: 35 },
-			{ label: 'Gelinlik ve stil', percent: 20 },
-			{ label: 'Foto ve video', percent: 12 },
-			{ label: 'Muzik ve eglence', percent: 10 },
-			{ label: 'Takilar ve detaylar', percent: 13 },
-			{ label: 'Yedek pay', percent: 10 }
+			{ label: 'Venue', percent: 35 },
+			{ label: 'Bridal wear and style', percent: 20 },
+			{ label: 'Photography and video', percent: 12 },
+			{ label: 'Music and entertainment', percent: 10 },
+			{ label: 'Accessories and details', percent: 13 },
+			{ label: 'Contingency fund', percent: 10 }
 		];
 
 		if (weddingType === 'nikah') {
@@ -104,25 +104,25 @@ document.addEventListener('DOMContentLoaded', function () {
 		var steps = [];
 
 		if (priority === 'venue') {
-			steps.push(cityLabel + ' icin 3 uygun mekan tipi belirle ve once hafta ici bos gunleri kontrol et.');
-			steps.push('Mekan netlesmeden davetiye ve masa planini kesinlestirme.');
+			steps.push(cityLabel + ' — shortlist three suitable venues and ask about available weekdays.');
+			steps.push('Confirm your venue before finalizing invitations and seating arrangements.');
 		} else if (priority === 'style') {
-			steps.push('Once gelinlik stilini netlestir, sonra kuafor ve makyaj denemesi planla.');
-			steps.push('Gelinlik provasina ayakkabi ve taki butcesini birlikte dahil et.');
+			steps.push('Choose your bridal style, then schedule hair and makeup trials.');
+			steps.push('Include shoes, accessories and alterations in your bridal budget.');
 		} else if (priority === 'media') {
-			steps.push('Cekim gunu akisini cikar ve dogal isik saatine gore foto/video ekibini sec.');
-			steps.push('Mekan seciminde cekim alanlarini mutlaka kontrol et.');
+			steps.push('Map out your wedding day and discuss natural light with your photography and video team.');
+			steps.push('Check photo locations when you visit a venue.');
 		} else {
-			steps.push('Butceyi sabitlemek icin once zorunlu kalemleri netlestir, sonra ekstra hizmet ekle.');
-			steps.push('En az yuzde 10 yedek pay ayir ve sozlesmesiz rezervasyon yapma.');
+			steps.push('Price your essential services before adding optional extras.');
+			steps.push('Set aside at least 10% for unexpected costs and confirm bookings with written contracts.');
 		}
 
 		if (weddingType === 'kina-nikah') {
-			steps.push('Kina ve nikah icin ayri gun mu ayni akista mi ilerleyecegine karar ver.');
+			steps.push('Decide whether to hold your rehearsal dinner and ceremony on separate days.');
 		} else if (weddingType === 'nikah') {
-			steps.push('Nikah tarihi kesinlesince sade kutlama paketi ve fotografciyi birlikte planla.');
+			steps.push('Once your ceremony date is confirmed, plan a small celebration and photography together.');
 		} else {
-			steps.push('Misafir sayisini netlestirip muzik, pasta ve oturma planini ayni tabloda topla.');
+			steps.push('Confirm your guest count, then coordinate music, cake and seating in one plan.');
 		}
 
 		return steps.slice(0, 3);
@@ -130,18 +130,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function buildPlannerFocus(priority, weddingType) {
 		if (priority === 'budget') {
-			return 'Bu planda odak maliyet kontrolu. Once sabit giderleri kapat, sonra gorsel detay ekle.';
+			return 'Your focus is budget management. Cover essential costs before adding decorative details.';
 		}
 
 		if (priority === 'style') {
-			return 'Bu planda odak stil butunlugu. Gelinlik, kuafor, makyaj ve taki ayni eksende ele alinmali.';
+			return 'Your focus is a cohesive style. Coordinate your bridal wear, hair, makeup and accessories.';
 		}
 
 		if (weddingType === 'nikah') {
-			return 'Bu plan daha kompakt bir akis icin hazirlandi. Hedef: az adimla net karar vermek.';
+			return 'This plan keeps an intimate ceremony simple, with a few clear decisions.';
 		}
 
-		return 'Bu plan, aramayi azaltip dogru sirayla karar vermen icin bir ilk yol haritasi sunar.';
+		return 'Use this starting roadmap to focus your research and make decisions in a practical order.';
 	}
 
 	function renderPlannerResult(form) {
@@ -157,19 +157,19 @@ document.addEventListener('DOMContentLoaded', function () {
 			return;
 		}
 
-		var cityValue = city.value || 'istanbul';
+		var cityValue = city.value || 'new-york';
 		var budgetValue = budget.value || 'mid';
 		var guestsValue = guests.value || 'medium';
 		var weddingTypeValue = weddingType.value || 'dugun';
 		var priorityValue = priority.value || 'venue';
-		var cityLabel = getPlannerOptionText(city) || 'Istanbul';
-		var budgetLabel = getPlannerOptionText(budget) || 'Orta butce';
-		var guestsLabel = getPlannerOptionText(guests) || '80-180 kisi';
-		var typeLabel = getPlannerOptionText(weddingType) || 'Dugun';
-		var steps = buildPlannerSteps(cityLabel.toLowerCase(), weddingTypeValue, priorityValue);
+		var cityLabel = getPlannerOptionText(city) || 'New York, NY';
+		var budgetLabel = getPlannerOptionText(budget) || 'Mid-range budget';
+		var guestsLabel = getPlannerOptionText(guests) || '80–180 guests';
+		var typeLabel = getPlannerOptionText(weddingType) || 'Full wedding';
+		var steps = buildPlannerSteps(cityLabel, weddingTypeValue, priorityValue);
 		var budgetItems = buildPlannerBudget(budgetValue, weddingTypeValue, priorityValue);
 		var budgetMarkup = budgetItems.map(function (item) {
-			return '<li><span>' + item.label + '</span><b>%' + item.percent + '</b></li>';
+			return '<li><span>' + item.label + '</span><b>' + item.percent + '%</b></li>';
 		}).join('');
 		var stepsMarkup = steps.map(function (step) {
 			return '<li>' + step + '</li>';
@@ -177,15 +177,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		resultHost.innerHTML = '' +
 			'<div class="planner-widget-result">' +
-				'<h4 class="planner-widget-result__title">' + cityLabel.toLowerCase() + ' icin kisisel dugun plani</h4>' +
-				'<p class="planner-widget-result__summary">' + cityLabel.toLowerCase() + ' icin ' + budgetLabel + ', ' + guestsLabel + ' ve ' + typeLabel + ' odakli bir plan hazirlandi.</p>' +
+				'<h4 class="planner-widget-result__title">Your wedding plan for ' + cityLabel + '</h4>' +
+				'<p class="planner-widget-result__summary">A starting plan for ' + cityLabel + ': ' + budgetLabel + ', ' + guestsLabel + ', ' + typeLabel + '.</p>' +
 				'<div class="planner-widget-result__focus">' + buildPlannerFocus(priorityValue, weddingTypeValue) + '</div>' +
 				'<div class="planner-widget-result__section">' +
-					'<strong>Siradaki adimlar</strong>' +
+					'<strong>Next steps</strong>' +
 					'<ul class="planner-widget-result__list">' + stepsMarkup + '</ul>' +
 				'</div>' +
 				'<div class="planner-widget-result__section">' +
-					'<strong>Butce dagilimi</strong>' +
+					'<strong>Example budget breakdown</strong>' +
 					'<ul class="planner-widget-budget list-unstyled mb-0">' + budgetMarkup + '</ul>' +
 				'</div>' +
 			'</div>';
@@ -240,10 +240,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	function normalizePreference(value) {
 		var normalized = normalizeName(value);
-		if (normalized === 'buhne' || normalized === 'sahne') {
+		if (normalized === 'stage' || normalized === 'buhne' || normalized === 'sahne') {
 			return 'stage';
 		}
-		if (normalized === 'flur' || normalized === 'koridor') {
+		if (normalized === 'aisle' || normalized === 'flur' || normalized === 'koridor') {
 			return 'aisle';
 		}
 		return 'none';
@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
 				return {
 					id: 'guest-' + index + '-' + normalizeName(name).replace(/[^a-z0-9]+/g, '-'),
 					name: name,
-					group: parts[1] || 'Genel',
+					group: parts[1] || 'General',
 					preference: normalizePreference(parts[2] || ''),
 					seatId: null
 				};
@@ -360,7 +360,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 					seats.push({
 						id: 'table-' + tableNumber + '-seat-' + (seatIndex + 1),
-						label: 'Koltuk ' + (seatIndex + 1),
+						label: 'Seat ' + (seatIndex + 1),
 						zone: zone,
 						guestId: null
 					});
@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 				tables.push({
 					id: 'table-' + tableNumber,
-					name: 'Masa ' + tableNumber,
+					name: 'Table ' + tableNumber,
 					layout: config.layout,
 					seats: seats,
 					configLabel: config.label,
@@ -715,7 +715,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 
 			if (getTableIdBySeatId(leftGuest.seatId) === getTableIdBySeatId(rightGuest.seatId)) {
-				warnings.push(rule.leftName + ' ile ' + rule.rightName + ' ayni masada oturuyor.');
+				warnings.push(rule.leftName + ' and ' + rule.rightName + ' are seated at the same table.');
 			}
 		});
 
@@ -727,7 +727,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			}
 
 			if (getTableIdBySeatId(leftGuest.seatId) !== getTableIdBySeatId(rightGuest.seatId)) {
-				warnings.push(rule.leftName + ' ile ' + rule.rightName + ' farkli masalara dustu.');
+				warnings.push(rule.leftName + ' and ' + rule.rightName + ' are seated at different tables.');
 			}
 		});
 
@@ -751,10 +751,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		var tableMarkup = state.tables.map(function (table) {
 			var seatsMarkup = table.seats.map(function (seat) {
 				var guest = seat.guestId ? findGuest(state, seat.guestId) : null;
-				var zoneLabel = seat.zone === 'stage' ? 'Sahne' : (seat.zone === 'aisle' ? 'Koridor' : 'Standart');
+				var zoneLabel = seat.zone === 'stage' ? 'Stage' : (seat.zone === 'aisle' ? 'Aisle' : 'Standard');
 				return '<div class="print-seat">' +
 					'<div class="print-seat__meta">' + escapeHtml(seat.label) + ' · ' + escapeHtml(zoneLabel) + '</div>' +
-					'<div class="print-seat__name">' + escapeHtml(guest ? guest.name : 'Boş') + '</div>' +
+					'<div class="print-seat__name">' + escapeHtml(guest ? guest.name : 'Empty') + '</div>' +
 					(guest ? '<div class="print-seat__group">' + escapeHtml(guest.group) + '</div>' : '') +
 				'</div>';
 			}).join('');
@@ -769,22 +769,22 @@ document.addEventListener('DOMContentLoaded', function () {
 		}).join('');
 
 		var warningsMarkup = warnings.length
-			? '<section class="print-box"><h3>Uyarılar</h3><ul>' + warnings.map(function (warning) {
+			? '<section class="print-box"><h3>Warnings</h3><ul>' + warnings.map(function (warning) {
 				return '<li>' + escapeHtml(warning) + '</li>';
 			}).join('') + '</ul></section>'
 			: '';
 
 		var unassignedMarkup = unassignedGuests.length
-			? '<section class="print-box"><h3>Bekleyen misafirler</h3><ul>' + unassignedGuests.map(function (guest) {
+			? '<section class="print-box"><h3>Unseated guests</h3><ul>' + unassignedGuests.map(function (guest) {
 				return '<li>' + escapeHtml(guest.name + ' · ' + guest.group) + '</li>';
 			}).join('') + '</ul></section>'
 			: '';
 
-		return '<!DOCTYPE html><html lang="tr"><head><meta charset="utf-8"><title>Oturma Planı</title><style>' +
+		return '<!DOCTYPE html><html lang="en-US"><head><meta charset="utf-8"><title>Seating Plan</title><style>' +
 			'body{font-family:Arial,sans-serif;padding:24px;color:#1f2a44;background:#fff;}h1{margin:0 0 8px;color:#0f1a6d;}p{margin:0 0 16px;color:#5b6880;}h2,h3{margin:0;color:#0f1a6d;}section{margin-bottom:20px;} .print-grid{display:grid;gap:16px;} .print-box{padding:16px;border:1px solid #e1e8ee;border-radius:12px;background:#fafcff;} .print-box ul{margin:10px 0 0;padding-left:18px;} .print-table{padding:16px;border:1px solid #e1e8ee;border-radius:14px;page-break-inside:avoid;} .print-table__head{display:flex;justify-content:space-between;gap:12px;align-items:flex-end;margin-bottom:14px;} .print-table__head span{color:#db0962;font-weight:700;} .print-table__grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;} .print-seat{padding:12px;border:1px solid #e6ebf3;border-radius:12px;background:#fff;} .print-seat__meta{font-size:12px;color:#7a869d;margin-bottom:6px;} .print-seat__name{font-weight:700;color:#0f1a6d;} .print-seat__group{font-size:12px;color:#5f6c84;margin-top:4px;} @media print{body{padding:0;} .print-table{break-inside:avoid;}}' +
 			'</style></head><body>' +
-			'<h1>Oturma Planı</h1>' +
-			'<p>' + escapeHtml(state.tables.length + ' masa, ' + state.guests.length + ' misafir') + '</p>' +
+			'<h1>Seating Plan</h1>' +
+			'<p>' + escapeHtml(state.tables.length + ' tables, ' + state.guests.length + ' guests') + '</p>' +
 			warningsMarkup +
 			unassignedMarkup +
 			'<div class="print-grid">' + tableMarkup + '</div>' +
@@ -819,7 +819,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}, 0);
 		var warnings = buildWarnings(state).length;
 
-		summary.innerHTML = '<strong>' + state.tables.length + ' masa</strong>, ' + seats + ' koltuk ve ' + state.guests.length + ' misafir hazır. Bekleyen misafir: ' + unassigned + '. Kural uyarısı: ' + warnings + '.';
+		summary.innerHTML = '<strong>' + state.tables.length + ' tables</strong>, ' + seats + ' seats and ' + state.guests.length + ' guests. Unseated guests: ' + unassigned + '. Seating rule warnings: ' + warnings + '.';
 	}
 
 	function renderWarnings(root, state) {
@@ -833,7 +833,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		warningsHost.classList.add('is-visible');
-		warningsHost.innerHTML = '<div class="seating-planner__warnings-title">Dikkat edilmesi gerekenler</div><ul class="seating-planner__warnings-list">' + warnings.map(function (warning) {
+		warningsHost.innerHTML = '<div class="seating-planner__warnings-title">Items to review</div><ul class="seating-planner__warnings-list">' + warnings.map(function (warning) {
 			return '<li>' + warning + '</li>';
 		}).join('') + '</ul>';
 	}
@@ -867,9 +867,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	function guestMarkup(guest, compact) {
 		var preferenceLabel = '';
 		if (guest.preference === 'stage') {
-			preferenceLabel = ' · Sahne';
+			preferenceLabel = ' · Stage';
 		} else if (guest.preference === 'aisle') {
-			preferenceLabel = ' · Koridor';
+			preferenceLabel = ' · Aisle';
 		}
 
 		if (compact) {
@@ -928,16 +928,16 @@ document.addEventListener('DOMContentLoaded', function () {
 	function createPlanObject(type, label, index, root) {
 		var normalizedType = type || 'ozel';
 		var defaultLabels = {
-			sahne: 'Gelin ve damat masası',
-			dans: 'Dans pisti',
-			muzik: 'Müzik köşesi',
-			hediye: 'Hediye alanı',
-			orkestra: 'Orkestra',
+			sahne: 'Sweetheart table',
+			dans: 'Dance floor',
+			muzik: 'Music area',
+			hediye: 'Gift table',
+			orkestra: 'Band',
 			bar: 'Bar',
-			foto: 'Foto alanı',
-			giris: 'Giriş',
-			kokteyl: 'Kokteyl',
-			ozel: 'Obje'
+			foto: 'Photo area',
+			giris: 'Entrance',
+			kokteyl: 'Cocktail area',
+			ozel: 'Object'
 		};
 
 		var planObject = {
@@ -955,9 +955,9 @@ document.addEventListener('DOMContentLoaded', function () {
 	function planObjectMarkup(planObject) {
 		var footprint = getPlanObjectFootprint(planObject);
 		return '<div class="seating-planner__plan-object seating-planner__plan-object--' + planObject.type + '" data-plan-object-id="' + planObject.id + '" style="left:' + planObject.position.x + 'px;top:' + planObject.position.y + 'px;width:' + footprint.width + 'px;height:' + footprint.height + 'px;">' +
-			'<button type="button" class="seating-planner__plan-object-handle" data-plan-object-drag aria-label="Objeyi tasi">Tut</button>' +
+			'<button type="button" class="seating-planner__plan-object-handle" data-plan-object-drag aria-label="Move object">Drag</button>' +
 			'<span class="seating-planner__plan-object-label">' + planObject.label + '</span>' +
-			'<button type="button" class="seating-planner__plan-object-remove" data-plan-object-remove="' + planObject.id + '" aria-label="Objeyi sil">Sil</button>' +
+			'<button type="button" class="seating-planner__plan-object-remove" data-plan-object-remove="' + planObject.id + '" aria-label="Remove object">Remove</button>' +
 		'</div>';
 	}
 
@@ -1043,8 +1043,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		if (table.collapsed) {
 			return '<button type="button" class="seating-planner__table seating-planner__table--floating seating-planner__table--mini" data-table-expand="' + table.id + '" style="left:' + table.position.x + 'px;top:' + table.position.y + 'px;">' +
-				'<span class="seating-planner__table-mini-label">Masa</span>' +
-				'<strong class="seating-planner__table-mini-number">' + table.name.replace('Masa ', '') + '</strong>' +
+				'<span class="seating-planner__table-mini-label">Table</span>' +
+				'<strong class="seating-planner__table-mini-number">' + table.name.replace('Table ', '') + '</strong>' +
 			'</button>';
 		}
 
@@ -1058,7 +1058,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 			return '<div class="seating-planner__seat' + seatZoneClass + '" data-seat-id="' + seat.id + '" style="' + seatStyle(table.layout, seatIndex, table.seats.length) + '">' +
 				'<div class="seating-planner__seat-label"><span>' + (seatIndex + 1) + '</span></div>' +
-				(guest ? guestMarkup(guest, true) : '<div class="seating-planner__placeholder">Bos</div>') +
+				(guest ? guestMarkup(guest, true) : '<div class="seating-planner__placeholder">Empty</div>') +
 			'</div>';
 		}).join('');
 
@@ -1069,12 +1069,12 @@ document.addEventListener('DOMContentLoaded', function () {
 					'<h3 class="seating-planner__table-title">' + table.name + '</h3>' +
 				'</div>' +
 				'<div class="seating-planner__table-actions">' +
-					'<button type="button" class="seating-planner__table-handle" data-table-drag aria-label="Masayi tasi">Tut</button>' +
-					'<button type="button" class="seating-planner__table-collapse" data-table-collapse="' + table.id + '" aria-label="Masayi ufalt">Ufalt</button>' +
+					'<button type="button" class="seating-planner__table-handle" data-table-drag aria-label="Move table">Drag</button>' +
+					'<button type="button" class="seating-planner__table-collapse" data-table-collapse="' + table.id + '" aria-label="Collapse table">Collapse</button>' +
 				'</div>' +
 			'</div>' +
-			'<span class="seating-planner__table-meta">' + occupied + '/' + table.seats.length + ' dolu</span>' +
-			'<div class="seating-planner__table-top ' + (table.layout.indexOf('row') === 0 ? 'seating-planner__table-top--row' : 'seating-planner__table-top--round') + '">' + table.name.replace('Masa ', '') + '</div>' +
+			'<span class="seating-planner__table-meta">' + occupied + '/' + table.seats.length + ' occupied</span>' +
+			'<div class="seating-planner__table-top ' + (table.layout.indexOf('row') === 0 ? 'seating-planner__table-top--row' : 'seating-planner__table-top--round') + '">' + table.name.replace('Table ', '') + '</div>' +
 			'<div class="' + seatClass + '">' + seatsMarkup + '</div>' +
 		'</div>';
 	}
@@ -1096,13 +1096,13 @@ document.addEventListener('DOMContentLoaded', function () {
 			? unassignedGuests.map(function (guest) {
 				return guestMarkup(guest, false);
 			}).join('')
-			: '<div class="seating-planner__empty">Tüm misafirler yerleştirildi.</div>';
+			: '<div class="seating-planner__empty">All guests have been seated.</div>';
 
 		mainTables.innerHTML = state.tables.filter(function (table) {
 			return table.area !== 'annex';
 		}).map(function (table) {
 			return tableMarkup(table, state);
-		}).join('') || '<div class="seating-planner__scene-empty">Ana salonda henüz masa yok.</div>';
+		}).join('') || '<div class="seating-planner__scene-empty">No tables in the main room yet.</div>';
 
 		mainObjects.innerHTML = state.planObjects.filter(function (planObject) {
 			return planObject.area !== 'annex';
@@ -1112,7 +1112,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			return table.area === 'annex';
 		}).map(function (table) {
 			return tableMarkup(table, state);
-		}).join('') || '<div class="seating-planner__scene-empty">Ek alana taşınan masa yok.</div>';
+		}).join('') || '<div class="seating-planner__scene-empty">No tables in the additional area yet.</div>';
 
 		annexObjects.innerHTML = state.planObjects.filter(function (planObject) {
 			return planObject.area === 'annex';
@@ -1431,7 +1431,7 @@ document.addEventListener('DOMContentLoaded', function () {
 			state.pairMap = buildRuleMap(state.rules.pairs);
 			state.conflictMap = buildRuleMap(state.rules.conflicts);
 			state.tables = buildTables(
-				configs.length ? configs : [{ layout: 'round-6', label: 'Yuvarlak masa · 6 kişi', count: 1 }],
+				configs.length ? configs : [{ layout: 'round-6', label: 'Round table · 6 seats', count: 1 }],
 				Math.max(0, parseInt(stageCountInput.value, 10) || 0),
 				Math.max(0, parseInt(aisleCountInput.value, 10) || 0)
 			);

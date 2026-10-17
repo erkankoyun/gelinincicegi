@@ -10,7 +10,7 @@
     const results = document.createElement('section');
     results.className = 'gc-results'; results.setAttribute('aria-label', 'Vendor search results');
     column.appendChild(results);
-    const forms = Array.from(document.querySelectorAll('form.tx-solr-search-form, form[id="tx-solr-search-form-pi-results"]')).filter(f => f.querySelector('[name="q"]'));
+    const forms = Array.from(document.querySelectorAll('form[id^="tx-solr-search-form-pi-results"]')).filter(f => f.querySelector('[name="q"]'));
     let state = new URLSearchParams(location.search);
     let controller;
     function el(tag, className, content) { const node = document.createElement(tag); if (className) node.className = className; if (content != null) node.textContent = content; return node; }

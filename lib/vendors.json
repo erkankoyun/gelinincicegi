@@ -1,0 +1,608 @@
+[
+  {
+    "id": "lovely-atlanta-bridal-shop",
+    "name": "Lovely Bride Atlanta",
+    "category": "bridal",
+    "city": "Atlanta",
+    "state": "GA",
+    "url": "https://lovelybride.com/stores/atlanta-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Atlanta"
+    ],
+    "coords": [
+      33.749,
+      -84.388
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-charleston-bridal-shop",
+    "name": "Lovely Bride Charleston",
+    "category": "bridal",
+    "city": "Charleston",
+    "state": "SC",
+    "url": "https://lovelybride.com/stores/charleston-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Charleston"
+    ],
+    "coords": [
+      32.7765,
+      -79.9311
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-charlotte-bridal-shop",
+    "name": "Lovely Bride Charlotte",
+    "category": "bridal",
+    "city": "Charlotte",
+    "state": "NC",
+    "url": "https://lovelybride.com/stores/charlotte-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Charlotte"
+    ],
+    "coords": [
+      35.2271,
+      -80.8431
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-chicago-bridal-shop",
+    "name": "Lovely Bride Chicago",
+    "category": "bridal",
+    "city": "Chicago",
+    "state": "IL",
+    "url": "https://lovelybride.com/stores/chicago-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Chicago"
+    ],
+    "coords": [
+      41.8781,
+      -87.6298
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-cincinnati-bridal-shop",
+    "name": "Lovely Bride Cincinnati",
+    "category": "bridal",
+    "city": "Cincinnati",
+    "state": "OH",
+    "url": "https://lovelybride.com/stores/cincinnati-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Cincinnati"
+    ],
+    "coords": [
+      39.1031,
+      -84.512
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-dallas-bridal-shop",
+    "name": "Lovely Bride Dallas",
+    "category": "bridal",
+    "city": "Dallas",
+    "state": "TX",
+    "url": "https://lovelybride.com/stores/dallas-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Dallas"
+    ],
+    "coords": [
+      32.7767,
+      -96.797
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-houston-bridal-shop",
+    "name": "Lovely Bride Houston",
+    "category": "bridal",
+    "city": "Houston",
+    "state": "TX",
+    "url": "https://lovelybride.com/stores/houston-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Houston"
+    ],
+    "coords": [
+      29.7604,
+      -95.3698
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-los-angeles-bridal-shop",
+    "name": "Lovely Bride Los Angeles",
+    "category": "bridal",
+    "city": "Los Angeles",
+    "state": "CA",
+    "url": "https://lovelybride.com/stores/los-angeles-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Los Angeles"
+    ],
+    "coords": [
+      34.0522,
+      -118.2437
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-los-gatos-bridal-shop",
+    "name": "Lovely Bride Los Gatos",
+    "category": "bridal",
+    "city": "Los Gatos",
+    "state": "CA",
+    "url": "https://lovelybride.com/stores/los-gatos-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Los Gatos"
+    ],
+    "coords": [
+      37.2358,
+      -121.9624
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-miami-bridal-shop",
+    "name": "Lovely Bride Miami",
+    "category": "bridal",
+    "city": "Miami",
+    "state": "FL",
+    "url": "https://lovelybride.com/stores/miami-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Miami"
+    ],
+    "coords": [
+      25.7617,
+      -80.1918
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-new-york-city-bridal-shop",
+    "name": "Lovely Bride New York City",
+    "category": "bridal",
+    "city": "New York",
+    "state": "NY",
+    "url": "https://lovelybride.com/stores/new-york-city-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "New York City"
+    ],
+    "coords": [
+      40.7128,
+      -74.006
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-philadelphia-bridal-shop",
+    "name": "Lovely Bride Philadelphia",
+    "category": "bridal",
+    "city": "Philadelphia",
+    "state": "PA",
+    "url": "https://lovelybride.com/stores/philadelphia-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Philadelphia"
+    ],
+    "coords": [
+      39.9526,
+      -75.1652
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-phoenix-bridal-shop",
+    "name": "Lovely Bride Phoenix",
+    "category": "bridal",
+    "city": "Phoenix",
+    "state": "AZ",
+    "url": "https://lovelybride.com/stores/phoenix-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Phoenix"
+    ],
+    "coords": [
+      33.4484,
+      -112.074
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-providence-bridal-shop",
+    "name": "Lovely Bride Providence",
+    "category": "bridal",
+    "city": "Providence",
+    "state": "RI",
+    "url": "https://lovelybride.com/stores/providence-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Providence"
+    ],
+    "coords": [
+      41.824,
+      -71.4128
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-rochester-bridal-shop",
+    "name": "Lovely Bride Rochester NY",
+    "category": "bridal",
+    "city": "Rochester",
+    "state": "NY",
+    "url": "https://lovelybride.com/stores/rochester-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Rochester NY"
+    ],
+    "coords": [
+      43.1566,
+      -77.6088
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-san-diego-bridal-shop",
+    "name": "Lovely Bride San Diego",
+    "category": "bridal",
+    "city": "San Diego",
+    "state": "CA",
+    "url": "https://lovelybride.com/stores/san-diego-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "San Diego"
+    ],
+    "coords": [
+      32.7157,
+      -117.1611
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-seattle-bridal-shop",
+    "name": "Lovely Bride Seattle",
+    "category": "bridal",
+    "city": "Seattle",
+    "state": "WA",
+    "url": "https://lovelybride.com/stores/seattle-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Seattle"
+    ],
+    "coords": [
+      47.6062,
+      -122.3321
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "lovely-washington-dc-bridal-shop",
+    "name": "Lovely Bride Washington DC",
+    "category": "bridal",
+    "city": "Washington DC",
+    "state": "DC",
+    "url": "https://lovelybride.com/stores/washington-dc-bridal-shop/",
+    "description": "Gelinlik ve aksesuar.",
+    "keywords": [
+      "gelinlik",
+      "bridal",
+      "dress",
+      "wedding",
+      "Washington DC"
+    ],
+    "coords": [
+      38.9072,
+      -77.0369
+    ],
+    "source": "https://lovelybride.com/nearest-location/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "kleinfeld",
+    "name": "Kleinfeld Bridal",
+    "category": "bridal",
+    "city": "New York",
+    "state": "NY",
+    "url": "https://kleinfeldbridal.com/",
+    "description": "New York gelinlik mağazası.",
+    "keywords": [
+      "bridal",
+      "wedding",
+      "düğün",
+      "New York"
+    ],
+    "coords": [
+      40.7128,
+      -74.006
+    ],
+    "source": "https://kleinfeldbridal.com/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "hall-of-springs",
+    "name": "Hall of Springs",
+    "category": "venue",
+    "city": "Saratoga Springs",
+    "state": "NY",
+    "url": "https://hallofsprings.com/saratogaweddings",
+    "description": "Saratoga Springs düğün ve etkinlik mekânı.",
+    "keywords": [
+      "venue",
+      "wedding",
+      "düğün",
+      "New York"
+    ],
+    "coords": [
+      43.0831,
+      -73.7859
+    ],
+    "source": "https://hallofsprings.com/saratogaweddings",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "franklin-plaza",
+    "name": "Franklin Plaza",
+    "category": "venue",
+    "city": "Troy",
+    "state": "NY",
+    "url": "https://www.franklinplaza.com/",
+    "description": "Hudson kıyısında düğün ve etkinlik salonu.",
+    "keywords": [
+      "venue",
+      "wedding",
+      "düğün",
+      "New York"
+    ],
+    "coords": [
+      42.7284,
+      -73.6918
+    ],
+    "source": "https://www.franklinplaza.com/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "oheka",
+    "name": "OHEKA CASTLE",
+    "category": "venue",
+    "city": "Huntington",
+    "state": "NY",
+    "url": "https://www.oheka.com/weddings.htm",
+    "description": "Long Island düğün mekânı.",
+    "keywords": [
+      "venue",
+      "wedding",
+      "düğün",
+      "New York"
+    ],
+    "coords": [
+      40.8682,
+      -73.4257
+    ],
+    "source": "https://www.oheka.com/weddings.htm",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "susan-stripling",
+    "name": "Susan Stripling Photography",
+    "category": "photography",
+    "city": "New York",
+    "state": "NY",
+    "url": "https://susanstripling.com/",
+    "description": "New York ve destinasyon düğün fotoğrafçılığı.",
+    "keywords": [
+      "photography",
+      "wedding",
+      "düğün",
+      "New York"
+    ],
+    "coords": [
+      40.7128,
+      -74.006
+    ],
+    "source": "https://susanstripling.com/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "jose-villa",
+    "name": "Jose Villa",
+    "category": "photography",
+    "city": "Santa Barbara",
+    "state": "CA",
+    "url": "https://www.josevilla.com/",
+    "description": "Santa Barbara düğün fotoğrafçılığı.",
+    "keywords": [
+      "photography",
+      "wedding",
+      "düğün",
+      "Santa Barbara"
+    ],
+    "coords": [
+      34.4208,
+      -119.6982
+    ],
+    "source": "https://www.josevilla.com/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "great-performances",
+    "name": "Great Performances",
+    "category": "catering",
+    "city": "New York",
+    "state": "NY",
+    "url": "https://greatperformances.com/",
+    "description": "New York etkinlik ve catering hizmeti.",
+    "keywords": [
+      "catering",
+      "wedding",
+      "düğün",
+      "New York"
+    ],
+    "coords": [
+      40.7128,
+      -74.006
+    ],
+    "source": "https://greatperformances.com/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "bbg",
+    "name": "Brooklyn Botanic Garden",
+    "category": "venue",
+    "city": "Brooklyn",
+    "state": "NY",
+    "url": "https://www.bbg.org/visit/weddings",
+    "description": "Brooklyn bahçe düğünü ve kutlama mekânı.",
+    "keywords": [
+      "venue",
+      "wedding",
+      "düğün",
+      "New York"
+    ],
+    "coords": [
+      40.6782,
+      -73.9442
+    ],
+    "source": "https://www.bbg.org/visit/weddings",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "foundry",
+    "name": "The Foundry",
+    "category": "venue",
+    "city": "Long Island City",
+    "state": "NY",
+    "url": "https://www.thefoundry.info/",
+    "description": "Long Island City düğün mekânı.",
+    "keywords": [
+      "venue",
+      "wedding",
+      "düğün",
+      "New York"
+    ],
+    "coords": [
+      40.7447,
+      -73.9485
+    ],
+    "source": "https://www.thefoundry.info/",
+    "checkedAt": "2026-10-17"
+  },
+  {
+    "id": "winston",
+    "name": "Winston Flowers",
+    "category": "florist",
+    "city": "Boston",
+    "state": "MA",
+    "url": "https://www.winstonflowers.com/weddings-and-events/weddings",
+    "description": "Düğün ve etkinlik çiçek tasarımı.",
+    "keywords": [
+      "florist",
+      "wedding",
+      "düğün",
+      "Boston"
+    ],
+    "coords": [
+      42.3601,
+      -71.0589
+    ],
+    "source": "https://www.winstonflowers.com/weddings-and-events/weddings",
+    "checkedAt": "2026-10-17"
+  }
+]

@@ -134,7 +134,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
 
 <div class="gd-funnel"
-     data-api-endpoint=""
+     data-api-endpoint="/api/advisor"
      data-session-key="gelincicegi-chat-"
      data-max-questions="5">
 
@@ -158,18 +158,18 @@
             <div class="gd-phase gd-phase--intro">
                 <div class="gd-funnel__badge">Düğün Danışmanı · Gelin Çiçeği</div>
                 <h2 class="gd-funnel__headline">Hayal ettiğin düğüne<br><span>birlikte ulaşıyoruz</span></h2>
-                <p class="gd-funnel__subline">Bu sadece bir form değil. Cevapların bir araya gelerek sana özgün, gerçekten kişisel bir düğün profili oluşturuyor.</p>
+                <p class="gd-funnel__subline">Amerika’daki şehrin, davetli sayın ve dolar bütçenle beş adımda kişisel düğün planını oluştur.</p>
                 <div class="gd-funnel__pills">
                     <span>Kişisel profil</span>
-                    <span>Anlık değerlendirme</span>
-                    <span>Uzman önerileri</span>
+                    <span>USD bütçe planı</span>
+                    <span>Kişisel yol haritası</span>
                 </div>
-                <p class="service-notice" role="status">Danışman hizmeti şu anda kullanılamıyor.</p>
+                
 <div class="gd-funnel__name-wrap">
                     <label class="gd-funnel__name-label" for="gd-name-input">Sana nasıl hitap edeyim? ✨</label>
-                    <input type="text" id="gd-name-input" class="gd-funnel__name-input" placeholder="Adın (örn: Sibel)" maxlength="50" autocomplete="given-name" disabled>
+                    <input type="text" id="gd-name-input" class="gd-funnel__name-input" placeholder="Adın (örn: Sibel)" maxlength="50" autocomplete="given-name">
                 </div>
-                <button type="button" class="gd-funnel__start-btn" disabled>Başlayalım →</button>
+                <button type="button" class="gd-funnel__start-btn">Başlayalım →</button>
             </div>
 
             <!-- PHASE: Question -->
@@ -180,10 +180,10 @@
                 <div class="gd-funnel__ack"></div>
                 <div class="gd-funnel__question">Hazırlanıyor…</div>
                 <form class="gd-funnel__form" autocomplete="off">
-                    <textarea class="gd-funnel__input" rows="2" placeholder="Yanıtını yaz…" disabled></textarea>
+                    <textarea class="gd-funnel__input" rows="2" placeholder="Yanıtını yaz…"></textarea>
                     <div class="gd-funnel__actions">
-                        <button type="button" class="gd-funnel__reset-btn" disabled>Yeni Başla</button>
-                        <button type="submit" class="gd-funnel__submit-btn" disabled>Devam et</button>
+                        <button type="button" class="gd-funnel__reset-btn">Yeni Başla</button>
+                        <button type="submit" class="gd-funnel__submit-btn">Devam et</button>
                     </div>
                 </form>
             </div>
@@ -195,14 +195,14 @@
                 <div class="gd-funnel__rich-reply"></div>
                 <!-- Email capture CTA -->
                 <div class="gd-funnel__email-cta">
-                    <p class="gd-funnel__email-cta-text">Planını kaydetmek ve mekan listesini almak için e-postanı veya telefon numaranı bırak 🤝</p>
+                    <p class="gd-funnel__email-cta-text">Planınla ilgili iletişim için e-postanı veya telefon numaranı bırak 🤝</p>
                     <form class="gd-funnel__email-form" autocomplete="off">
-                        <input type="email" class="gd-funnel__email-input" placeholder="E-posta adresi (isteğe bağlı)" disabled>
-                        <input type="tel" class="gd-funnel__phone-input" placeholder="Telefon numarası (isteğe bağlı)" disabled>
-                        <p class="gd-funnel__contact-hint">En az birini doldurman yeterli — ikisi de olabilir 😊</p>
+                        <input type="email" class="gd-funnel__email-input" placeholder="E-posta adresi (isteğe bağlı)">
+                        <input type="tel" class="gd-funnel__phone-input" placeholder="Telefon numarası (isteğe bağlı)">
+                        <p class="gd-funnel__contact-hint">En az birini doldurman yeterli. Bilgilerin bu düğün planıyla ilgili iletişim için kaydedilir; pazarlama aboneliği oluşturulmaz. 😊</p>
                         <div class="gd-funnel__actions">
-                            <button type="button" class="gd-funnel__reset-btn" disabled>Yeni Başla</button>
-                            <button type="submit" class="gd-funnel__submit-btn" disabled>Planımı Kaydet ✦</button>
+                            <button type="button" class="gd-funnel__reset-btn">Yeni Başla</button>
+                            <button type="submit" class="gd-funnel__submit-btn">Planımı Kaydet ✦</button>
                         </div>
                     </form>
                 </div>
@@ -211,14 +211,14 @@
             <!-- PHASE: Complete -->
             <div class="gd-phase gd-phase--complete gd-hidden">
                 <div class="gd-funnel__step-kicker gd-funnel__step-kicker--done">Planın Kaydedildi ✦</div>
-                <p class="gd-funnel__complete-msg">Harika! Önerilerimizi en kısa sürede e-postayla göndereceğiz. Aşağıdan danışmana istediğin kadar soru sorabilirsin.</p>
+                <p class="gd-funnel__complete-msg">Profilin kaydedildi. Planını PDF olarak indirebilir ve aşağıdaki planlama rehberine soru sorabilirsin.</p>
                 <!-- Full advisor plan -->
                 <div class="gd-funnel__rich-reply"></div>
                 <!-- Actions -->
                 <div class="gd-funnel__actions gd-funnel__actions--complete">
-                    <button type="button" class="gd-funnel__reset-btn" disabled>Yeni Profil Oluştur</button>
-                    <button type="button" class="gd-funnel__email-btn" disabled>✉️ Planı E-postama Gönder</button>
-                    <button type="button" class="gd-funnel__pdf-btn gd-funnel__pdf-btn--secondary" disabled>📄 PDF İndir</button>
+                    <button type="button" class="gd-funnel__reset-btn">Yeni Profil Oluştur</button>
+                    <button type="button" class="gd-funnel__email-btn">✉️ Planı E-postama Gönder</button>
+                    <button type="button" class="gd-funnel__pdf-btn gd-funnel__pdf-btn--secondary">📄 PDF İndir</button>
                 </div>
                 <div class="gd-funnel__email-status" style="display:none"></div>
                 <!-- Free-form advisor chat -->
@@ -229,8 +229,8 @@
                     </div>
                     <div class="gd-advisor__history" aria-live="polite"></div>
                     <form class="gd-advisor__form" autocomplete="off">
-                        <textarea class="gd-advisor__input" rows="2" placeholder="Örn: Beylikdüzü'nde lüks mekan önerisi var mı?" disabled></textarea>
-                        <button type="submit" class="gd-funnel__submit-btn gd-advisor__submit" disabled>Gönder</button>
+                        <textarea class="gd-advisor__input" rows="2" placeholder="Örn: New York’ta mekân seçerken nelere dikkat etmeliyim?"></textarea>
+                        <button type="submit" class="gd-funnel__submit-btn gd-advisor__submit">Gönder</button>
                     </form>
                 </div>
             </div>
@@ -308,7 +308,7 @@
     </div>
 </footer>
 
-<script src="_assets/90b18b54e9b9f1b491b9423745702b08/JavaScript/chatf89d.js?1777104047"></script>
+<script src="assets/advisor.js"></script>
 <script src="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/JavaScript/appcc78.js?1771681566"></script>
 <script src="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/JavaScript/main94c6.js?1775588048"></script>
 <script src="_assets/8b1ef067de4e3422d5b6e67d56a9ac7e/JavaScript/typewriter4c0d.js?1775211192"></script>

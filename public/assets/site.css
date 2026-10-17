@@ -94,3 +94,125 @@ body.gc-show-results .solr-search-layout { display:block !important; }
   .bb-footer a { margin:4px 0; }
 }
 @media (prefers-reduced-motion:reduce) { .bb-nav-links a,.bb-footer a { transition:none; } }
+
+/* Responsive layout refinement — Full HD, tablet and mobile (2026-10-17). */
+.bb-header { padding:clamp(14px,1.6vw,25px) clamp(16px,3vw,36px) 8px !important; }
+.bb-nav { width:100%; max-width:1180px; min-height:40px; margin-inline:auto; justify-content:center; }
+.bb-nav-links { gap:clamp(20px,2.6vw,43px); justify-content:center; }
+.bb-nav-links a { font-size:clamp(15px,.95vw,17px); line-height:1.4; }
+.bb-search-brand { max-width:100%; margin-bottom:clamp(26px,3vw,44px); }
+.bb-wordmark-text { font-size:clamp(52px,4.2vw,78px); line-height:1.18; letter-spacing:-.035em; }
+.solr-search-intro-layout {
+  width:100%;
+  margin:0 auto !important;
+  padding-top:clamp(18px,2vw,32px) !important;
+  padding-bottom:clamp(64px,6.2vw,105px) !important;
+}
+.solr-search-intro-layout .container-fluid {
+  width:100%; max-width:1100px; margin-inline:auto;
+  padding-inline:clamp(16px,3vw,32px) !important;
+}
+.solr-search-intro-layout .container-fluid > .row {
+  display:flex; width:100%; margin-inline:0; justify-content:center;
+}
+.solr-search-intro-layout #c7 {
+  flex:0 0 100%; width:100%; max-width:100%; min-width:0; padding-inline:0;
+}
+.solr-search-intro-layout #c7 .tx_solr,
+.solr-search-intro-layout #c7 .tx-solr-search-form,
+.solr-search-intro-layout #c7 form {
+  width:100%; max-width:100%; min-width:0;
+}
+.solr-search-intro-layout .tx-solr-search-form__inner {
+  width:100%; max-width:100%; min-width:0; padding:0 !important;
+}
+.solr-search-intro-layout .tx-solr-search-inline {
+  display:flex; align-items:center; flex-wrap:nowrap; gap:6px;
+  width:100%; max-width:980px; min-width:0; min-height:70px;
+  margin-inline:auto; padding:7px !important; box-sizing:border-box;
+  border-radius:999px;
+}
+.solr-search-intro-layout .tx-solr-q {
+  flex:1 1 0%; width:0 !important; min-width:0; max-width:none;
+  height:54px !important; margin:0 !important; padding:0 clamp(14px,2vw,24px) !important;
+  font-size:clamp(16px,1.05vw,19px); line-height:1.35;
+  box-sizing:border-box;
+}
+.solr-search-intro-layout .tx-solr-submit {
+  display:inline-flex; flex:0 0 auto; align-items:center; justify-content:center;
+  height:54px !important; min-width:126px; margin:0 !important;
+  padding:0 20px !important; font-size:17px; line-height:1.2; gap:8px;
+  white-space:nowrap; box-sizing:border-box;
+}
+.solr-search-intro-layout .tx-solr-submit i { font-size:18px; line-height:1; }
+.solr-search-layout .container-fluid {
+  width:100%; max-width:1160px; margin-inline:auto;
+  padding-inline:clamp(16px,3vw,30px) !important;
+}
+.solr-search-layout .row.solr-search-layout__row {
+  display:grid; grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:30px; width:100%; margin-inline:0; align-items:start;
+}
+.solr-search-layout__row > .solr-search-layout__main,
+.solr-search-layout__row > .solr-search-layout__sidebar {
+  flex:none; width:100%; max-width:100%; min-width:0; padding-inline:0;
+}
+.solr-search-layout .tx-solr-search-form__inner { width:100%; max-width:100%; padding-inline:0 !important; }
+.solr-search-layout .bb-search-brand { margin:0 auto 18px; }
+.solr-search-layout .bb-wordmark-text { font-size:clamp(35px,3.3vw,50px); }
+.solr-search-layout .tx-solr-search-inline {
+  display:flex; flex-wrap:nowrap; align-items:center; width:100%; min-width:0;
+  padding:5px !important; border:1px solid #d9ddec; border-radius:999px;
+  box-sizing:border-box;
+}
+.solr-search-layout .tx-solr-q {
+  flex:1 1 0%; width:0 !important; min-width:0; height:48px !important;
+  margin:0 !important; padding:0 14px !important; font-size:16px;
+  border:0 !important; box-shadow:none !important; background:transparent;
+}
+.solr-search-layout .tx-solr-submit {
+  display:inline-flex; flex:0 0 auto; align-items:center; justify-content:center;
+  height:48px !important; min-width:110px; margin:0 !important;
+  padding:0 14px !important; font-size:15px; line-height:1.2;
+  border:0 !important; border-radius:999px !important;
+  background:var(--bb-navy) !important; color:#fff !important;
+}
+.solr-search-layout .gc-results { padding-inline:0; min-width:0; }
+.bb-footer { padding:25px clamp(16px,3vw,36px) 32px !important; }
+.bb-footer-grid { width:100%; max-width:1100px; grid-template-columns:repeat(3,minmax(0,1fr)); }
+.bb-copyright { max-width:1100px; }
+@media (max-width:1200px) {
+  .bb-nav { justify-content:flex-end; }
+  .bb-nav-links { justify-content:center; gap:2px; }
+  .bb-nav-links a { font-size:16px; }
+}
+@media (max-width:800px) {
+  .solr-search-layout .row.solr-search-layout__row { grid-template-columns:minmax(0,1fr); gap:22px; }
+  .bb-footer-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .bb-footer-grid>div:last-child { grid-column:1 / -1; }
+}
+@media (max-width:600px) {
+  .bb-header { padding:14px 16px 8px !important; }
+  .bb-search-brand { margin-bottom:28px; }
+  .bb-wordmark-text { font-size:clamp(46px,10vw,62px); line-height:1.2; }
+  .solr-search-intro-layout { padding-top:18px !important; padding-bottom:54px !important; }
+  .solr-search-intro-layout .container-fluid { padding-inline:14px !important; }
+  .solr-search-intro-layout .tx-solr-search-inline { min-height:60px; padding:5px !important; gap:3px; }
+  .solr-search-intro-layout .tx-solr-q {
+    height:50px !important; min-width:0; font-size:16px; padding:0 12px !important;
+  }
+  .solr-search-intro-layout .tx-solr-submit {
+    height:50px !important; min-width:103px; padding:0 12px !important; font-size:15px; gap:6px;
+  }
+  .solr-search-intro-layout .tx-solr-submit i { font-size:16px; }
+  .bb-footer-grid { gap:20px; }
+}
+@media (max-width:420px) {
+  .solr-search-intro-layout .container-fluid { padding-inline:12px !important; }
+  .solr-search-intro-layout .tx-solr-q { padding:0 10px !important; }
+  .solr-search-intro-layout .tx-solr-submit { min-width:92px; padding:0 10px !important; font-size:14px; }
+  .solr-search-intro-layout .tx-solr-submit i { display:none; }
+  .bb-footer-grid { grid-template-columns:1fr; }
+  .bb-footer-grid>div:last-child { grid-column:auto; }
+}
+
